@@ -1,0 +1,163 @@
+<h1> ADD STUDENT </h1>
+
+<div class="form-control container">
+  <form class="example-form">
+      <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Enter G.R. No." [(ngModel)]="s_gr_no" name="s_gr_no">
+        </mat-form-field>
+
+ <br>
+
+
+ <mat-form-field class="example-full-width">
+    <input matInput type="number" placeholder="Enter Roll No." [(ngModel)]="s_roll_no" name="s_roll_no">
+  </mat-form-field>
+
+<br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter  Surname" [(ngModel)]="s_sname" name="s_sname">
+    </mat-form-field>
+
+<br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter First name" [(ngModel)]="s_fname" name="s_fname">
+    </mat-form-field>
+
+<br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter Last name" [(ngModel)]="s_lname" name="s_lname">
+    </mat-form-field>
+
+<br>
+
+Select Gender
+<br>
+    <mat-radio-group class="example-radio-group" [(ngModel)]="s_gender" name="s_gender">
+        <mat-radio-button class="example-radio-button" *ngFor="let item of gender_arr" [value]="item">
+           {{item}}
+        </mat-radio-button>
+      </mat-radio-group>
+
+<br>
+<br>
+<mat-form-field>
+    <input matInput placeholder="Enter Date of birth" type="date" [(ngModel)]="s_dob" name="s_dob">
+    <!-- <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="s_dob" [(ngModel)]="s_dob">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker> -->
+  </mat-form-field>
+
+  <br>
+
+
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter Email" #emailFormControl="ngModel" required email [(ngModel)]="s_email" name="s_email" [errorStateMatcher]="matcher">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+<br>
+<br>
+
+<mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Enter your address" [(ngModel)]="s_address" name="s_address"></textarea>
+  </mat-form-field>
+
+<br>
+<br>
+
+<mat-form-field>
+    <mat-select placeholder="Enter Class" [(ngModel)]="s_class" name="s_class">
+      <mat-option *ngFor="let item of class_arr" [value]="item" >
+        {{item}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+<br>
+
+<mat-form-field>
+    <mat-select placeholder="Enter Division" [(ngModel)]="s_div" name="s_div">
+      <mat-option *ngFor="let item of div_arr" [value]="item" >
+        {{item}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+  <br>
+  <mat-form-field class="example-full-width">
+      <span matPrefix>+91 &nbsp;</span>
+      <input type="tel" matInput placeholder="Enter Contact No." [(ngModel)]="s_contactno" name="s_contactno">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+
+<mat-form-field>
+    <mat-select placeholder="Enter Category" [(ngModel)]="s_category" name="s_category">
+      <mat-option *ngFor="let item of category_arr" [value]="item" >
+        {{item}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+  <br>
+
+
+<mat-form-field>
+    <mat-select placeholder="Select BloodGroup" [(ngModel)]="s_bloodgroup" name="s_bloodgroup">
+      <mat-option *ngFor="let item of bloodgroup_arr" [value]="item" >
+        {{item}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+  <br>
+
+
+<mat-form-field>
+    <mat-select placeholder="Select Class Teacher" [(ngModel)]="s_classteacher" name="s_classteacher">
+      <mat-option *ngFor="let item of teacher_arr" [value]="item" >
+        {{item}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<br>
+<br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Username" [(ngModel)]="s_username" name="s_username">
+  </mat-form-field>
+
+
+  <br>
+  <br>
+
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Password" [(ngModel)]="s_password" name="s_password">
+  </mat-form-field>
+
+  <br>
+  <br>
+
+
+<!-- <mat-form-field class="example-full-width">
+    <input matInput placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic">
+  </mat-form-field> -->
+</form>
+<button (click)="onadd()" class="btn btn-primary">Add</button>
+</div>
