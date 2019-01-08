@@ -1,31 +1,4 @@
 <h1> ADD STUDENT </h1>
-<div class="form-control container">
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id">
-</mat-form-field>
-
-
-<br>
-<br>
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
-</mat-form-field>
-
-<br>
-<br>
-
-
-<mat-form-field>
-  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
-    <mat-option *ngFor="let item of usertype_arr" [value]="item" >
-      {{item}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<br>
-</div>
 
 <div class="form-control container">
   <form class="example-form">
@@ -125,7 +98,7 @@ Select Gender
   <mat-form-field class="example-full-width">
       <span matPrefix>+91 &nbsp;</span>
       <input type="tel" matInput placeholder="Enter Contact No." [(ngModel)]="s_contactno" name="s_contactno">
-      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-icon matSuffix>mode_edits</mat-icon>
     </mat-form-field>
 
     <br>
@@ -166,12 +139,25 @@ Select Gender
 
 <br>
 <br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Username" [(ngModel)]="s_username" name="s_username">
+  </mat-form-field>
+
+
+  <br>
   <br>
 
-  <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic">
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Password" [(ngModel)]="s_password" name="s_password">
+  </mat-form-field>
+
+  <br>
+  <br>
+
+  <!-- <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic"> -->
  <!-- <mat-form-field class="example-full-width">
     <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic">
   </mat-form-field> -->
 </form>
-<button (click)="onadd()" class="btn btn-primary">Add</button>
+<button (click)="onupdate()" class="btn btn-primary">Update</button>
 </div>

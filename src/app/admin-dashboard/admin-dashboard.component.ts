@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Student} from '../../../Classes/Student';
+import { User } from '../../../Classes/User';
 import { AdmindashboardService } from "../Services/admindashboard.service";
+import { LoginserviceService } from "../Services/loginservice.service";
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 
 //import { Router,ActivatedRoute } from '@angular/router';
@@ -29,24 +32,24 @@ export class AdminDashboardComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  s_gr_no:number;
-  s_roll_no:number;
-  s_sname:string;
-  s_fname:string;
-  s_lname:string;
-  s_gender:string;
+  s_gr_no:number=9911;
+  s_roll_no:number=9911;
+  s_sname:string='abc';
+  s_fname:string='abc';
+  s_lname:string="abc";
+  s_gender:string="Female";
   s_dob:Date;
-  s_email:string;
-  s_address:string;
-  s_class:number;
-  s_div:string;
-  s_contactno:number;
-  s_category:string;
-  s_bloodgroup:string;
-  s_classteacher:string;
+  s_email:string="a@gmail.com";
+  s_address:string="paldi";
+  s_class:number=6;
+  s_div:string="A";
+  s_contactno:number=23994784;
+  s_category:string="General";
+  s_bloodgroup:string="A+";
+  s_classteacher:string="vinita";
   // s_username:string="S"+this.s_gr_no;
   // s_password:string="S"+this.s_class+this.s_div+this.s_gr_no;
-  s_username:string;
+  fk_u_id:number=2018;
   s_password:string;
   s_profilepic:string;
   selectedFile:File=null;
@@ -59,57 +62,79 @@ bloodgroup_arr:string[]=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
 teacher_arr:string[]=['sunita','vinita','minita','namita'];
 minDate = new Date(1990, 0, 1);
 maxDate = new Date(Date.now());
+usertype_arr:string[]=['Parent','Teacher','Admin'];
+  s_user_type:string;
+
+  user_id:number=99;
+  user_password:string="stu99";
+  user_type:string="Parent";
   constructor(private _data:AdmindashboardService) { }
 
   ngOnInit() {
   }
-  // onChange(value)
-  // {
-  //   this.selectedFile=<File>value.target.files[0];
-  // }
+  onChange(value)
+  {
+    this.selectedFile=<File>value.target.files[0];
+  }
+  addUser(){
+    console.log("üser function called");
 
+  }
   onadd()
   {
+    this.fk_u_id=this.user_id;
+    this.s_password=this.user_password;
+    this.s_user_type=this.user_type;
 
-    // const fd=new FormData();
-    // fd.append('s_gr_no',this.s_gr_no.toString());
-    // fd.append('s_roll_no',this.s_roll_no.toString());
-    // fd.append('s_sname',this.s_sname);
-    // fd.append('s_fname',this.s_fname);
-    // fd.append('s_lname',this.s_lname);
-    // fd.append('s_gender',this.s_gender);
-    // fd.append('s_dob',this.s_dob.toString());
-    // fd.append('s_email',this.s_email);
-    // fd.append('s_address',this.s_address);
-    // fd.append('s_class',this.s_class.toString());
-    // fd.append('s_div',this.s_div);
-    // fd.append('s_contactno',this.s_contactno.toString());
-    // fd.append('s_category',this.s_category);
-    // fd.append('s_bloodgroup',this.s_bloodgroup);
-    // fd.append('s_classteacher',this.s_classteacher);
-    // fd.append('s_username',this.s_username);
-    // fd.append('s_password',this.s_password);
-    // fd.append('s_profilepic',this.selectedFile,this.selectedFile.name);
+    const userfd=new FormData();
+    console.log(this.user_id);
+        console.log(this.user_password);
+      console.log(this.user_type);
+
+    userfd.append('user_id',this.user_id.toString());
+    userfd.append('user_password',this.user_password);
+    userfd.append('user_type',this.user_type);
+
+    this._data.AddUser(userfd).subscribe(
+      (data:User)=>{
+        console.log(data);
+        alert("Congratulations!!! User added");
+
+        const fd=new FormData();
+        fd.append('s_gr_no',this.s_gr_no.toString());
+        fd.append('s_roll_no',this.s_roll_no.toString());
+        fd.append('s_sname',this.s_sname);
+        fd.append('s_fname',this.s_fname);
+        fd.append('s_lname',this.s_lname);
+        fd.append('s_gender',this.s_gender);
+        fd.append('s_dob',this.s_dob.toString());
+        fd.append('s_email',this.s_email);
+        fd.append('s_address',this.s_address);
+        fd.append('s_class',this.s_class.toString());
+        fd.append('s_div',this.s_div);
+        fd.append('s_contactno',this.s_contactno.toString());
+        fd.append('s_category',this.s_category);
+        fd.append('s_bloodgroup',this.s_bloodgroup);
+        fd.append('s_classteacher',this.s_classteacher);
+        fd.append('s_password',this.s_password);
+        fd.append('s_profilepic',this.selectedFile,this.selectedFile.name);
+        fd.append('fk_u_id',this.fk_u_id.toString());
 
 
-    // this._data.AddStudent(fd).subscribe(
-    //   (data:any)=>{
-    //     console.log(data);
-    //   }
-    // );
-   this._data.AddStudent(new Student(this.s_gr_no,this.s_roll_no,this.s_sname,this.s_fname,this.s_lname,
-                       this.s_gender,this.s_dob,this.s_email,this.s_address,this.s_class,
-                         this.s_div,this.s_contactno,this.s_category,this.s_bloodgroup,
-                         this.s_classteacher,this.s_username,this.s_password,this.s_profilepic)).subscribe(
-   (data:any)=>{
-     console.log(data);
-     alert("Added successfully");
-  //   //   //this._route.navigate(['/']);
 
-     }
-   );
+        this._data.AddStudent(fd).subscribe(
+          (data:any)=>{
+            console.log(data);
+            //alert("Congratulations!!! Student added");
 
-}
+          });
+
+
+
+       });
+
+
+  }
 
 }
 

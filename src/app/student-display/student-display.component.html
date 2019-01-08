@@ -1,0 +1,114 @@
+<!-- <table class="table">
+  <thead>
+    <th> </th>
+    <th>Bill Date</th>
+    <th></th>
+  </thead>
+  <tr *ngFor="let item of s_arr">
+      <td><img src="{{item.s_profilepic}}" alt="..." style="height: 30px;width:30px;border-radius: 20px;"></td>
+    <td>{{item.s_roll_no}}</td>
+    <td>{{item.s_fname}}</td>
+    <td>{{item.s_lname}}</td>
+    <td>{{item.s_class}}</td>
+    <td>{{item.s_div}}</td>
+  </tr>
+</table> -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+
+
+
+    <ng-container matColumnDef="s_profilepic">
+        <th mat-header-cell *matHeaderCellDef > Profile Photo </th>
+        <td mat-cell *matCellDef="let element"> <a (click)="updateprofile(element)"><img src="http://localhost:3000/images/{{element.s_profilepic}}" style="height: 30px;width:30px;border-radius: 20px;" ></a> </td>
+      </ng-container>
+
+
+   <ng-container matColumnDef="s_roll_no">
+    <th mat-header-cell *matHeaderCellDef > Roll No </th>
+    <td mat-cell *matCellDef="let element"> {{element.s_roll_no}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="s_sname">
+    <th mat-header-cell *matHeaderCellDef > SurName </th>
+    <td mat-cell *matCellDef="let element"> {{element.s_sname}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="s_fname">
+      <th mat-header-cell *matHeaderCellDef > Student Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.s_fname}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="s_class">
+        <th mat-header-cell *matHeaderCellDef > Class </th>
+        <td mat-cell *matCellDef="let element"> {{element.s_class}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="s_div">
+          <th mat-header-cell *matHeaderCellDef > Division</th>
+          <td mat-cell *matCellDef="let element"> {{element.s_div}} </td>
+        </ng-container>
+
+
+
+
+    <ng-container matColumnDef="Buttons">
+      <th mat-header-cell *matHeaderCellDef > </th>
+      <td mat-cell  *matCellDef="let element"> <button mat-icon-button>
+          <mat-icon (click)="delete(element)">delete</mat-icon>&nbsp;&nbsp;&nbsp;
+          <mat-icon (click)="update(element)">create</mat-icon>
+        </button></td>
+
+    </ng-container>
+
+
+
+
+  <!-- <ng-container matColumnDef="view">
+    <th mat-header-cell *matHeaderCellDef > View Detail </th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="Viewdetail(element.b_id)">View Detail</button>
+    </td>
+  </ng-container> -->
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+</table>
+<br>
+<br>
+<div>
+    <button mat-raised-button color="warn" (click)="deleteAll()"><mat-icon>delete</mat-icon>Delete</button>
+
+
+
+</div>
+
+

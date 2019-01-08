@@ -1,0 +1,26 @@
+<h1>LOGIN</h1>
+
+<div class="form-control container">
+  <form class="example-form">
+      <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Enter User ID" [(ngModel)]="user_id" name="user_id">
+        </mat-form-field>
+
+ <br>
+ <mat-form-field class="example-full-width">
+  <input matInput type="password" placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
+</mat-form-field>
+
+<br>
+
+<mat-form-field>
+  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
+    <mat-option *ngFor="let item of usertype_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<button mat-raised-button color="primary" (click)="onlogin()">LOGIN</button>
+</form>
+ </div>
