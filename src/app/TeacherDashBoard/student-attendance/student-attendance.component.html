@@ -1,0 +1,97 @@
+<div>
+<mat-form-field>
+  <mat-select placeholder="Enter Class" [(ngModel)]="s_class" name="s_class">
+    <mat-option *ngFor="let item of class_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<br>
+
+<mat-form-field>
+  <mat-select placeholder="Enter Division" [(ngModel)]="s_div" name="s_div">
+    <mat-option *ngFor="let item of div_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<br>
+
+
+
+<mat-form-field>
+  <input matInput placeholder="Enter Date" type="date" [(ngModel)]="s_a_date" name="s_a_date">
+  <!-- <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="s_dob" [(ngModel)]="s_dob">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker> -->
+</mat-form-field>
+
+<br>
+<br>
+
+<button mat-raised-button color="warn" (click)="getStudents()">GET</button><br><br>
+<hr>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <!-- <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox> -->
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    (change)="$event ? s_a_status=true : s_a_status=false"
+                    [checked]="true">
+                     <!-- [checked]="selection.isSelected(row)" -->
+                     <!-- (change)="$event ? selection.toggle(row) : null"  -->
+                  </mat-checkbox>
+    </td>
+  </ng-container>
+
+
+<mat-form-field>
+<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+
+
+
+  <ng-container matColumnDef="s_profilepic">
+      <th mat-header-cell *matHeaderCellDef > Profile Photo </th>
+      <td mat-cell *matCellDef="let element"> <a><img src="http://localhost:3000/images/{{element.s_profilepic}}" style="height: 30px;width:30px;border-radius: 20px;" ></a> </td>
+    </ng-container>
+
+
+ <ng-container matColumnDef="s_roll_no">
+  <th mat-header-cell *matHeaderCellDef > Roll No </th>
+  <td mat-cell *matCellDef="let element"> {{element.s_roll_no}} </td>
+</ng-container>
+
+
+<ng-container matColumnDef="s_sname">
+  <th mat-header-cell *matHeaderCellDef > SurName </th>
+  <td mat-cell *matCellDef="let element"> {{element.s_sname}} </td>
+</ng-container>
+
+
+<ng-container matColumnDef="s_fname">
+    <th mat-header-cell *matHeaderCellDef > Student Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.s_fname}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+</table>
+<button mat-raised-button color="warn" (click)="addAttendance()"><mat-icon>add</mat-icon>Upload Attendance</button><br><br>
+</div>

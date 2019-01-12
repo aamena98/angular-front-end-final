@@ -1,4 +1,4 @@
-<!-- <h1> ADD STUDENT </h1>
+<h1> ADD TEACHER </h1>
 <div class="form-control container">
 <mat-form-field class="example-full-width">
   <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id">
@@ -81,13 +81,13 @@
 
     <br>
 
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-select placeholder="Enter Class" [(ngModel)]="t_classteacher" name="t_classteacher">
         <mat-option *ngFor="let item of class_arr" [value]="item" >
           {{item}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <br>
   <br>
@@ -100,8 +100,21 @@
       </mat-select>
     </mat-form-field>
 
+
     <br>
 
+
+
+<mat-form-field>
+  <mat-select placeholder="Enter Class" [(ngModel)]="t_class" name="t_class">
+    <mat-option *ngFor="let item of class_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<br>
 Select Gender
 <br>
     <mat-radio-group class="example-radio-group" [(ngModel)]="t_gender" name="t_gender">
@@ -114,10 +127,10 @@ Select Gender
 <br>
 <mat-form-field>
     <input matInput placeholder="Enter Date of birth" type="date" [(ngModel)]="t_dob" name="t_dob">
-  <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="s_dob" [(ngModel)]="s_dob">
+  <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="t_dob" [(ngModel)]="t_dob">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker> -->
-    <!-- </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 <br>
 
 <br>
@@ -138,23 +151,15 @@ Select Gender
   <br>
 
 
-<mat-form-field>
-    <mat-select placeholder="Select Class Teacher" [(ngModel)]="t_classteacher" name="t_classteacher">
-      <mat-option *ngFor="let item of teacher_arr" [value]="item" >
-        {{item}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
 
 <br>
 <br>
   <br>
 
   <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="t_profilepic" name="t_profilepic">
-  <mat-form-field class="example-full-width">
-    <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic">
+  <!-- <mat-form-field class="example-full-width">
+    <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="t_profilepic" name="t_profilepic">
   </mat-form-field> -->
-  <!--
 </form>
 <button (click)="onadd()" class="btn btn-primary">Add</button>
-</div> -->
+</div>

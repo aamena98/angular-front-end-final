@@ -64,7 +64,7 @@ minDate = new Date(1990, 0, 1);
 maxDate = new Date(Date.now());
 usertype_arr:string[]=['Parent','Teacher','Admin'];
   s_user_type:string;
-
+user_arr:User[];
   user_id:number=99;
   user_password:string="stu99";
   user_type:string="Parent";
@@ -91,14 +91,26 @@ usertype_arr:string[]=['Parent','Teacher','Admin'];
         console.log(this.user_password);
       console.log(this.user_type);
 
-    userfd.append('user_id',this.user_id.toString());
-    userfd.append('user_password',this.user_password);
-    userfd.append('user_type',this.user_type);
+      this._data.AddUser(new User(this.user_id,this.user_password,this.user_type)).subscribe(
+        (data:any)=>{
+          console.log(data);
+          //this.user_arr.push(new User(this.user_id,this.user_password,this.user_type));
 
-    this._data.AddUser(userfd).subscribe(
-      (data:User)=>{
-        console.log(data);
-        alert("Congratulations!!! User added");
+
+      // this._xyz.addStudent(new student(this.rno,this.sname,this.gen,this.mobno,this.scity,this.saction)).subscribe(
+      //   (data:any)=>{
+      //     console.log(data);
+      //     this.arr.push(new student(this.rno,this.sname,this.gen,this.mobno,this.scity,this.saction));
+      //   }
+      // );
+    // userfd.append('user_id',this.user_id.toString());
+    // userfd.append('user_password',this.user_password);
+    // userfd.append('user_type',this.user_type);
+
+    // this._data.AddUser(userfd).subscribe(
+    //   (data:User)=>{
+    //     console.log(data);
+    //     alert("Congratulations!!! User added");
 
         const fd=new FormData();
         fd.append('s_gr_no',this.s_gr_no.toString());

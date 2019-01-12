@@ -19,6 +19,11 @@ import { UpdateProfilepicComponent } from './update-profilepic/update-profilepic
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AddStudentFormComponent } from './add-student-form/add-student-form.component';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { TeacherDisplayComponent } from './teacher-display/teacher-display.component';
+import { EditTeacherComponent } from './edit-teacher/edit-teacher.component';
+import { UpdateTeacherProfileComponent } from './update-teacher-profile/update-teacher-profile.component';
+import { AddNoticeComponent } from './add-notice/add-notice.component';
+import { StudentAttendanceComponent } from './TeacherDashBoard/student-attendance/student-attendance.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
     UpdateProfilepicComponent,
     LoginPageComponent,
     AddStudentFormComponent,
-    AddTeacherComponent
+    AddTeacherComponent,
+    TeacherDisplayComponent,
+    EditTeacherComponent,
+    UpdateTeacherProfileComponent,
+    AddNoticeComponent,
+    StudentAttendanceComponent
   ],
   imports: [
     routing,

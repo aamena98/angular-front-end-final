@@ -61,6 +61,7 @@ onChange(value)
     this.s_gr_no=this._aroute.snapshot.params['id'];
     this._ser.getStudentBygrno(this.s_gr_no).subscribe(
       (data:Student[])=>{
+        console.log(this.s_roll_no);
         this.s_roll_no=data[0].s_roll_no;
         this.s_sname=data[0].s_sname;
         this.s_fname=data[0].s_fname;

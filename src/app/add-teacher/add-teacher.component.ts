@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { User } from "../../../Classes/User";
+import { Teacher } from "../../../Classes/Teacher";
+import { AdmindashboardService } from "../Services/admindashboard.service";
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 
 @Component({
   selector: 'app-add-teacher',
@@ -14,7 +27,7 @@ export class AddTeacherComponent implements OnInit {
    t_qualification:string;
    t_profilepic:string;
    t_contactno:number;
-   fk_u_id:string;
+   fk_u_id:number;
    t_password:string;
    t_subjectname:string;
    t_classteacher:number;
@@ -37,17 +50,63 @@ usertype_arr:string[]=['Parent','Teacher','Admin'];
   user_id:number;
   user_password:string;
   user_type:string;
-
-  constructor() { }
+  selectedFile:File=null;
+t_class:number;
+   matcher = new MyErrorStateMatcher();
+  constructor(private _data:AdmindashboardService) { }
 
 
   ngOnInit() {
   }
   onChange(value)
   {
-    //this.selectedFile=<File>value.target.files[0];
+    this.selectedFile=<File>value.target.files[0];
   }
 
   onadd()
-  {}
+  {
+
+    this.fk_u_id=this.user_id;
+    this.t_password=this.user_password;
+    this.user_type=this.user_type;
+
+    const userfd=new FormData();
+    console.log(this.user_id);
+        console.log(this.user_password);
+      console.log(this.user_type);
+
+      this._data.AddUser(new User(this.user_id,this.user_password,this.user_type)).subscribe(
+        (data:any)=>{
+          console.log(data);
+
+        const fd=new FormData();
+        fd.append('t_number',this.t_number.toString());
+        fd.append('t_name',this.t_name);
+        fd.append('t_address',this.t_address);
+        fd.append('t_email',this.t_email);
+        fd.append('t_qualification',this.t_qualification);
+        fd.append('t_profilepic',this.selectedFile,this.selectedFile.name);
+        fd.append('t_contactno',this.t_contactno.toString());
+        fd.append('fk_u_id',this.fk_u_id.toString());
+        fd.append('t_password',this.t_password);
+        fd.append('t_classdiv',this.t_classdiv);
+        fd.append('t_class',this.t_class.toString());
+        fd.append('t_dob',this.t_dob.toString());
+        fd.append('t_category',this.t_category);
+        fd.append('t_gender',this.t_gender);
+
+
+        this._data.AddTeacher(fd).subscribe(
+          (data:any)=>{
+            console.log(data);
+            //alert("Congratulations!!! Student added");
+
+          });
+
+
+
+       });
+
+
+  }
 }

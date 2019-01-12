@@ -1,0 +1,22 @@
+<h1> ADD STUDENT </h1>
+<div class="form-control container">
+  <mat-form-field>
+    <input matInput placeholder="Enter Date " type="date" [(ngModel)]="n_date" name="n_date">
+  </mat-form-field>
+
+<br>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Enter Notice Title" [(ngModel)]="n_title" name="n_title">
+</mat-form-field>
+
+<br>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Enter Notice Description" [(ngModel)]="n_description" name="n_description">
+</mat-form-field>
+<button (click)="onadd()" class="btn btn-primary">Add</button>
+</div>
+

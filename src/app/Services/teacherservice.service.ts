@@ -1,32 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Student } from '../../../Classes/Student';
+import { Teacher } from '../../../Classes/Teacher';
 import { User } from 'Classes/User';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AdmindashboardService {
-
-  studentgetaddurl:string='http://localhost:3000/students/';
-  updateprofileurl:string='http://localhost:3000/profile/';
+export class TeacherserviceService {
   adduserurl:string='http://localhost:3000/user/';
   teachergetaddurl:string='http://localhost:3000/teacher/';
+  updateteacherprofileurl:string='http://localhost:3000/tprofile/';
 
   constructor(public _http:HttpClient) { }
 
-  viewClass()
+  viewTeacherList()
   {
-    return this._http.get(this.studentgetaddurl);
-  }
-
-  AddStudent(item:FormData){
-  return this._http.post(this.studentgetaddurl,item);
+    return this._http.get(this.teachergetaddurl);
   }
 
   AddTeacher(item:FormData){
     return this._http.post(this.teachergetaddurl,item);
     }
-
 
   AddUser(item:User){
     let body=JSON.stringify(item);
@@ -34,34 +28,34 @@ export class AdmindashboardService {
     return this._http.post(this.adduserurl,body,{headers:h});
   }
 
-  deleteStudent(s_roll_no:number)
+  deleteTeacher(t_number:string)
   {
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.delete(this.studentgetaddurl+s_roll_no,{headers:h});
+    return this._http.delete(this.teachergetaddurl+t_number,{headers:h});
 
   }
   deleteAll()
   {
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.delete(this.studentgetaddurl,{headers:h});
-
+    return this._http.delete(this.teachergetaddurl,{headers:h});
   }
-  updateStudent(item:Student)
+  updateTeacher(item:Teacher)
   {
     let body=JSON.stringify(item);
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.put(this.studentgetaddurl+item.s_gr_no,body,{headers:h});
+    return this._http.put(this.teachergetaddurl+item.t_number,body,{headers:h});
   }
-  getStudentBygrno(s_gr_no)
+  getTeacherById(t_number:string)
   {
-    return this._http.get(this.studentgetaddurl+s_gr_no);
+    return this._http.get(this.teachergetaddurl+t_number);
   }
   updateProfilepic(item:FormData)
   {
-    return this._http.post(this.updateprofileurl,item);
+    return this._http.post(this.updateteacherprofileurl,item);
   }
-  getStudentBygrnoforprofilepic(s_gr_no)
+  getTeacherByidforprofilepic(t_number:string)
   {
-    return this._http.get(this.updateprofileurl+s_gr_no);
+    return this._http.get(this.teachergetaddurl+t_number);
   }
+
 }

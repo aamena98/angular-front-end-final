@@ -6,11 +6,10 @@ export class Teacher{
     public t_qualification:string,
     public t_profilepic:string,
     public t_contactno:number,
-    public fk_u_id:string,
+    public fk_u_id:number,
     public t_password:string,
-    public t_subjectname:string,
-    public t_classteacher:number,
     public t_classdiv:string,
+    public t_class:number,
     public t_dob:Date,
     public t_category:string,
     public t_gender:string
