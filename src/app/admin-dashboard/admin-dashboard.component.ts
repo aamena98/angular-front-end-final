@@ -46,11 +46,11 @@ export class AdminDashboardComponent implements OnInit {
   s_contactno:number=23994784;
   s_category:string="General";
   s_bloodgroup:string="A+";
-  s_classteacher:string="vinita";
+
   // s_username:string="S"+this.s_gr_no;
   // s_password:string="S"+this.s_class+this.s_div+this.s_gr_no;
   fk_u_id:number=2018;
-  s_password:string;
+
   s_profilepic:string;
   selectedFile:File=null;
   arr:Student[]=[];
@@ -83,7 +83,6 @@ user_arr:User[];
   onadd()
   {
     this.fk_u_id=this.user_id;
-    this.s_password=this.user_password;
     this.s_user_type=this.user_type;
 
     const userfd=new FormData();
@@ -113,7 +112,7 @@ user_arr:User[];
     //     alert("Congratulations!!! User added");
 
         const fd=new FormData();
-        fd.append('s_gr_no',this.s_gr_no.toString());
+        // fd.append('s_gr_no',this.s_gr_no.toString());
         fd.append('s_roll_no',this.s_roll_no.toString());
         fd.append('s_sname',this.s_sname);
         fd.append('s_fname',this.s_fname);
@@ -127,8 +126,6 @@ user_arr:User[];
         fd.append('s_contactno',this.s_contactno.toString());
         fd.append('s_category',this.s_category);
         fd.append('s_bloodgroup',this.s_bloodgroup);
-        fd.append('s_classteacher',this.s_classteacher);
-        fd.append('s_password',this.s_password);
         fd.append('s_profilepic',this.selectedFile,this.selectedFile.name);
         fd.append('fk_u_id',this.fk_u_id.toString());
 

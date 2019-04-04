@@ -29,11 +29,8 @@
 
 <div class="form-control container">
   <form class="example-form">
-      <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Enter Teacher No." [(ngModel)]="t_number" name="t_number">
-        </mat-form-field>
 
- <br>
+
 
 
  <mat-form-field class="example-full-width">
@@ -92,26 +89,9 @@
     <br>
   <br>
 
-  <mat-form-field>
-      <mat-select placeholder="Enter Division" [(ngModel)]="t_classdiv" name="t_classdiv">
-        <mat-option *ngFor="let item of div_arr" [value]="item" >
-          {{item}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-
     <br>
 
 
-
-<mat-form-field>
-  <mat-select placeholder="Enter Class" [(ngModel)]="t_class" name="t_class">
-    <mat-option *ngFor="let item of class_arr" [value]="item" >
-      {{item}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
 
 <br>
 <br>
@@ -152,9 +132,6 @@ Select Gender
 
 
 
-<br>
-<br>
-  <br>
 
   <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="t_profilepic" name="t_profilepic">
   <!-- <mat-form-field class="example-full-width">

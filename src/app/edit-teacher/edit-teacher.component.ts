@@ -29,10 +29,6 @@ export class EditTeacherComponent implements OnInit {
   t_profilepic:string;
   t_contactno:number;
   fk_u_id:number;
-  t_password:string;
-  t_subjectname:string;
-  t_classteacher:number;
-  t_classdiv:string;
   t_dob:Date;
   t_category:string;
   t_gender:string;
@@ -64,20 +60,17 @@ onChange(value)
   constructor(private _ser:TeacherserviceService,private _aroute:ActivatedRoute,private _route:Router) { }
 
   ngOnInit() {
-    this.t_number=this._aroute.snapshot.params['id'];
-    this._ser.getTeacherById(this.t_number).subscribe(
+    this.fk_u_id=this._aroute.snapshot.params['id'];
+    this._ser.getTeacherById(this.fk_u_id).subscribe(
       (data:Teacher[])=>{
-        this.t_number=data[0].t_number;
+
         this.t_name=data[0].t_name;
         this.t_gender=data[0].t_gender;
         this.t_dob=data[0].t_dob;
         this.t_email=data[0].t_email;
         this.t_qualification=data[0].t_qualification;
         this.t_address=data[0].t_address;
-        this.t_class=data[0].t_class;
-        this.t_classdiv=data[0].t_classdiv;
         this.t_contactno=data[0].t_contactno;
-        this.t_password=data[0].t_password;
         this.fk_u_id=data[0].fk_u_id;
         this.t_category=data[0].t_category;
        this.t_profilepic=data[0].t_profilepic;
@@ -88,7 +81,7 @@ onChange(value)
 
 onupdate()
 {
-this._ser.updateTeacher(new Teacher(this.t_number,this.t_name,this.t_address,this.t_email,this.t_qualification,this.t_profilepic,this.t_contactno,this.fk_u_id,this.t_password,this.t_classdiv,this.t_class,this.t_dob,this.t_category,this.t_gender)).subscribe(
+this._ser.updateTeacher(new Teacher(this.t_name,this.t_address,this.t_email,this.t_qualification,this.t_profilepic,this.t_contactno,this.fk_u_id,this.t_dob,this.t_category,this.t_gender)).subscribe(
       (data:any)=>{
     console.log(data);
     alert('updated Successfully!!!');

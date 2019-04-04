@@ -27,6 +27,22 @@ export class AdmindashboardService {
     return this._http.post(this.teachergetaddurl,item);
     }
 
+    getUser()
+    {
+       return this._http.get(this.adduserurl);
+    }
+
+    deleteUser(user_id:number)
+    {
+      let h=new HttpHeaders().set('Content-Type','application/json');
+      return this._http.delete(this.adduserurl+user_id,{headers:h});
+    }
+    updateUser(item:User)
+    {
+      let body=JSON.stringify(item);
+      let h=new HttpHeaders().set('Content-Type','application/json');
+      return this._http.put(this.adduserurl+item.user_id,body,{headers:h});
+    }
 
   AddUser(item:User){
     let body=JSON.stringify(item);
@@ -34,10 +50,10 @@ export class AdmindashboardService {
     return this._http.post(this.adduserurl,body,{headers:h});
   }
 
-  deleteStudent(s_roll_no:number)
+  deleteStudent(fk_u_id:number)
   {
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.delete(this.studentgetaddurl+s_roll_no,{headers:h});
+    return this._http.delete(this.studentgetaddurl+fk_u_id,{headers:h});
 
   }
   deleteAll()
@@ -50,18 +66,18 @@ export class AdmindashboardService {
   {
     let body=JSON.stringify(item);
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.put(this.studentgetaddurl+item.s_gr_no,body,{headers:h});
+    return this._http.put(this.studentgetaddurl+item.fk_u_id,body,{headers:h});
   }
-  getStudentBygrno(s_gr_no)
+  getStudentByUserId(fk_u_id:number)
   {
-    return this._http.get(this.studentgetaddurl+s_gr_no);
+    return this._http.get(this.studentgetaddurl+fk_u_id);
   }
   updateProfilepic(item:FormData)
   {
     return this._http.post(this.updateprofileurl,item);
   }
-  getStudentBygrnoforprofilepic(s_gr_no)
+  getStudentByUserIdforprofilepic(fk_u_id:number)
   {
-    return this._http.get(this.updateprofileurl+s_gr_no);
+    return this._http.get(this.updateprofileurl+fk_u_id);
   }
 }

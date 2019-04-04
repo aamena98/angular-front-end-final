@@ -28,10 +28,10 @@ export class TeacherserviceService {
     return this._http.post(this.adduserurl,body,{headers:h});
   }
 
-  deleteTeacher(t_number:string)
+  deleteTeacher(fk_u_id:number)
   {
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.delete(this.teachergetaddurl+t_number,{headers:h});
+    return this._http.delete(this.teachergetaddurl+fk_u_id,{headers:h});
 
   }
   deleteAll()
@@ -43,19 +43,19 @@ export class TeacherserviceService {
   {
     let body=JSON.stringify(item);
     let h=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.put(this.teachergetaddurl+item.t_number,body,{headers:h});
+    return this._http.put(this.teachergetaddurl+item.fk_u_id,body,{headers:h});
   }
-  getTeacherById(t_number:string)
+  getTeacherById(fk_u_id:number)
   {
-    return this._http.get(this.teachergetaddurl+t_number);
+    return this._http.get(this.teachergetaddurl+fk_u_id);
   }
   updateProfilepic(item:FormData)
   {
     return this._http.post(this.updateteacherprofileurl,item);
   }
-  getTeacherByidforprofilepic(t_number:string)
+  getTeacherByidforprofilepic(fk_u_id:number)
   {
-    return this._http.get(this.teachergetaddurl+t_number);
+    return this._http.get(this.teachergetaddurl+fk_u_id);
   }
 
 }

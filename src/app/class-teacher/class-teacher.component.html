@@ -1,0 +1,41 @@
+<h1> Add class Teacher </h1>
+<div class="form-control container">
+
+<mat-form-field>
+  <mat-select placeholder="Enter Class Teacher name" [(ngModel)]="c_t_name" name="c_t_name"  (valueChange)="change(c_t_name)">
+    <mat-option *ngFor="let item of c_t_name_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<br>
+<br>
+
+<mat-form-field>
+  <mat-select placeholder="Enter Class" [(ngModel)]="c_t_class" name="c_t_class" >
+    <mat-option *ngFor="let item of class_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<br>
+
+<mat-form-field>
+  <mat-select placeholder="Enter Division" [(ngModel)]="c_t_div" name="c_t_div">
+    <mat-option *ngFor="let item of div_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<br>
+<br>
+<button (click)="onadd()" class="btn btn-primary">Add</button>
+
+
+</div>

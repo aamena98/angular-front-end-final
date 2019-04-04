@@ -24,6 +24,16 @@ import { EditTeacherComponent } from './edit-teacher/edit-teacher.component';
 import { UpdateTeacherProfileComponent } from './update-teacher-profile/update-teacher-profile.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
 import { StudentAttendanceComponent } from './TeacherDashBoard/student-attendance/student-attendance.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { ClassTeacherComponent } from './class-teacher/class-teacher.component';
+import { EditClassTeacherComponent } from './edit-class-teacher/edit-class-teacher.component';
+import { ClassTeacherDisplayComponent } from './class-teacher-display/class-teacher-display.component';
+import { DivisionComponent } from './division/division.component';
+import { AddDivisionComponent } from './add-division/add-division.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { NewStudentAttendanceComponent } from './new-student-attendance/new-student-attendance.component';
+import { ExamresultComponent } from './examresult/examresult.component';
+import { NewExamResultComponent } from './new-exam-result/new-exam-result.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +50,17 @@ import { StudentAttendanceComponent } from './TeacherDashBoard/student-attendanc
     EditTeacherComponent,
     UpdateTeacherProfileComponent,
     AddNoticeComponent,
-    StudentAttendanceComponent
+    StudentAttendanceComponent,
+    AddUserComponent,
+    ClassTeacherComponent,
+    EditClassTeacherComponent,
+    ClassTeacherDisplayComponent,
+    DivisionComponent,
+    AddDivisionComponent,
+    ForgetPasswordComponent,
+    NewStudentAttendanceComponent,
+    ExamresultComponent,
+    NewExamResultComponent
   ],
   imports: [
     routing,

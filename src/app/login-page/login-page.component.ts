@@ -38,4 +38,9 @@ constructor(private _ser:LoginserviceService,private _route:Router) { }
     );
   }
 
+
+  forgetpass()
+  {
+
+  }
 }

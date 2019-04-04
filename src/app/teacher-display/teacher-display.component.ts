@@ -66,7 +66,7 @@ t_arr:Teacher[];
 
   delete(item:Teacher)
   {
-    this._ser.deleteTeacher(item.t_number).subscribe(
+    this._ser.deleteTeacher(item.fk_u_id).subscribe(
       (data:Teacher[])=>{
         console.log(data);
         this.t_arr.splice(this.t_arr.indexOf(item),1);
@@ -86,11 +86,11 @@ t_arr:Teacher[];
   }
   update(item:Teacher)
 {
-  this._route.navigate(['/updateTeacher',item.t_number]);
+  this._route.navigate(['/updateTeacher',item.fk_u_id]);
 }
 updateprofile(item:Teacher)
 {
-  this._route.navigate(['/updateTeacherProfile',item.t_number]);
+  this._route.navigate(['/updateTeacherProfile',item.fk_u_id]);
 }
 
 }

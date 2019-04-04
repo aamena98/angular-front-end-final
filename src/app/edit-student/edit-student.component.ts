@@ -41,6 +41,7 @@ export class EditStudentComponent implements OnInit {
   s_password:string;
   s_profilepic:string;
   selectedFile:File=null;
+fk_u_id:number;
   arr:Student[]=[];
 gender_arr:string[]=['Male','Female'];
 class_arr:number[]=[1,2,3,4,5,6,7,8,9,10];
@@ -58,10 +59,11 @@ onChange(value)
   constructor(private _ser:AdmindashboardService,private _aroute:ActivatedRoute,private _route:Router) { }
 
   ngOnInit() {
-    this.s_gr_no=this._aroute.snapshot.params['id'];
-    this._ser.getStudentBygrno(this.s_gr_no).subscribe(
+    this.fk_u_id=this._aroute.snapshot.params['id'];
+    this._ser.getStudentByUserId(this.fk_u_id).subscribe(
       (data:Student[])=>{
         console.log(this.s_roll_no);
+        // this.s_gr_no=data[0].s_gr_no;
         this.s_roll_no=data[0].s_roll_no;
         this.s_sname=data[0].s_sname;
         this.s_fname=data[0].s_fname;
@@ -75,9 +77,6 @@ onChange(value)
         this.s_contactno=data[0].s_contactno;
         this.s_category=data[0].s_category;
         this.s_bloodgroup=data[0].s_bloodgroup;
-        this.s_classteacher=data[0].s_classteacher;
-        this.s_username=data[0].s_username;
-        this.s_password=data[0].s_password;
         this.s_profilepic=data[0].s_profilepic;
       }
     );
@@ -86,7 +85,7 @@ onChange(value)
 
   onupdate()
   {
- this._ser.updateStudent(new Student(this.s_gr_no,this.s_roll_no,this.s_sname,this.s_fname,this.s_lname,this.s_gender,this.s_dob,this.s_email,this.s_address,this.s_class,this.s_div,this.s_contactno,this.s_category,this.s_bloodgroup,this.s_classteacher,this.s_username,this.s_password,this.s_profilepic)).subscribe(
+ this._ser.updateStudent(new Student(this.s_roll_no,this.s_sname,this.s_fname,this.s_lname,this.s_gender,this.s_dob,this.s_email,this.s_address,this.s_class,this.s_div,this.s_contactno,this.s_category,this.s_bloodgroup,this.fk_u_id,this.s_profilepic)).subscribe(
         (data:any)=>{
       console.log(data);
       alert('updated Successfully!!!');

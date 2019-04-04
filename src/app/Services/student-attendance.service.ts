@@ -11,8 +11,9 @@ export class StudentAttendanceService {
   constructor(public _http:HttpClient) { }
 
 
-  AddAttendance(item:StudentAttendance)
+  AddAttendance(item)
 {
+  //console.log(item);
   let body=JSON.stringify(item);
   let h=new HttpHeaders().set('Content-Type','application/json');
   return this._http.post(this.addgetstudentAttendanceurl,body,{headers:h});
@@ -25,5 +26,13 @@ getStudentByclassdiv(class_no:number,div_name:string)
 getStudentAttendance()
 {
   return this._http.get(this.addgetstudentAttendanceurl);
+}
+updateAttendance(item)
+{
+  let body=JSON.stringify(item);
+  let h=new HttpHeaders().set('Content-Type','application/json');
+  return this._http.put(this.addgetstudentAttendanceurl,body,{headers:h});
+
+
 }
 }

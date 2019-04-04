@@ -1,0 +1,65 @@
+<div>
+    <mat-form-field>
+      <mat-select placeholder="Enter Class" [(ngModel)]="s_class" name="s_class">
+        <mat-option *ngFor="let item of class_arr" [value]="item" >
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <mat-form-field>
+      <mat-select placeholder="Enter Division" [(ngModel)]="s_div" name="s_div">
+        <mat-option *ngFor="let item of div_arr" [value]="item" >
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <mat-form-field>
+      <input matInput type="date" placeholder="Enter Date"  [(ngModel)]="s_a_date" name="s_a_date">
+      <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker> -->
+      <!-- <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="s_dob" [(ngModel)]="s_dob">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker> -->
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <button mat-raised-button color="warn" (click)="getStudents()">GET</button><br><br>
+    <hr>
+
+
+
+      <h1>Students List:</h1>
+      <table class="table">
+        <thead>
+          <th> </th>
+          <th>Roll Number</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </thead>
+        <tr  *ngFor="let item of s_arr;let i=index">
+          <td>
+            <input type="checkbox" name="a_status" checked>
+          </td>
+          <td>
+                   {{item.s_roll_no}}
+          </td>
+                      <td>
+                        {{item.s_sname}}
+                      </td>
+                      <td>
+                          {{item.s_fname}}
+                                  </td>
+                                   </tr>
+
+      </table>
+      <button mat-raised-button color="warn" (click)="addAttendance()"><mat-icon>add</mat-icon>Upload Attendance</button><br><br>

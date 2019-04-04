@@ -2,9 +2,6 @@
 
 <div class="form-control container">
   <form class="example-form">
-      <mat-form-field class="example-full-width">
-          <input matInput type="number" placeholder="Enter G.R. No." [(ngModel)]="s_gr_no" name="s_gr_no">
-        </mat-form-field>
 
  <br>
 
@@ -125,17 +122,6 @@ Select Gender
     </mat-select>
   </mat-form-field>
 
-  <br>
-  <br>
-
-
-<mat-form-field>
-    <mat-select placeholder="Select Class Teacher" [(ngModel)]="s_classteacher" name="s_classteacher">
-      <mat-option *ngFor="let item of teacher_arr" [value]="item" >
-        {{item}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
 
 
 

@@ -27,14 +27,12 @@ export class UpdateProfilepicComponent implements OnInit {
   s_contactno:number;
   s_category:string;
   s_bloodgroup:string;
-  s_classteacher:string;
   // s_username:string="S"+this.s_gr_no;
   // s_password:string="S"+this.s_class+this.s_div+this.s_gr_no;
-  s_username:string;
-  s_password:string;
   s_profilepic:string;
   selectedFile:File=null;
   arr:Student[]=[];
+  fk_u_id:number;
 gender_arr:string[]=['Male','Female'];
 class_arr:number[]=[1,2,3,4,5,6,7,8,9,10];
 div_arr:string[]=['A','B','C'];
@@ -49,10 +47,11 @@ onChange(value)
   }
   ngOnInit() {
 
-    this.s_gr_no=this._aroute.snapshot.params['id'];
-    console.log(this.s_gr_no);
-    this._ser.getStudentBygrnoforprofilepic(this.s_gr_no).subscribe(
+    this.fk_u_id=this._aroute.snapshot.params['id'];
+    console.log(this.fk_u_id);
+    this._ser.getStudentByUserIdforprofilepic(this.fk_u_id).subscribe(
       (data:Student[])=>{
+        console.log(data);
         this.s_roll_no=data[0].s_roll_no;
         this.s_sname=data[0].s_sname;
         this.s_fname=data[0].s_fname;
@@ -66,22 +65,21 @@ onChange(value)
         this.s_contactno=data[0].s_contactno;
         this.s_category=data[0].s_category;
         this.s_bloodgroup=data[0].s_bloodgroup;
-        this.s_classteacher=data[0].s_classteacher;
-        this.s_username=data[0].s_username;
-        this.s_password=data[0].s_password;
+        //this.fk_u_id=data[0].fk_u_id;
         this.s_profilepic=data[0].s_profilepic;
+        console.log(this.s_profilepic);
         this.arr=data;
 
       }
     );
-console.log(this.s_profilepic);
+
 
 }
 
   uploadphoto()
   {
     const fd=new FormData();
-    fd.append('s_gr_no',this.s_gr_no.toString());
+    // fd.append('s_gr_no',this.s_gr_no.toString());
   fd.append('s_roll_no',this.s_roll_no.toString());
 fd.append('s_sname',this.s_sname);
 fd.append('s_fname',this.s_fname);
@@ -95,9 +93,7 @@ fd.append('s_div',this.s_div);
 fd.append('s_contactno',this.s_contactno.toString());
 fd.append('s_category',this.s_category);
 fd.append('s_bloodgroup',this.s_bloodgroup);
-fd.append('s_classteacher',this.s_classteacher);
-fd.append('s_username',this.s_username);
-fd.append('s_password',this.s_password);
+fd.append('fk_u_id',this.fk_u_id.toString());
 fd.append('s_profilepic',this.selectedFile,this.selectedFile.name);
     this._ser.updateProfilepic(fd).subscribe(
       (data:Student)=>{

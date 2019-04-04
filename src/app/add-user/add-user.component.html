@@ -1,0 +1,31 @@
+<h1> ADD USER </h1>
+<div class="form-control container">
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id">
+</mat-form-field>
+
+
+<br>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
+</mat-form-field>
+
+<br>
+<br>
+
+
+<mat-form-field>
+  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
+    <mat-option *ngFor="let item of usertype_arr" [value]="item" >
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<br>
+
+<button (click)="onadd()" class="btn btn-primary">Add</button>
+
+</div>

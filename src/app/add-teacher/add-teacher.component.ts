@@ -4,6 +4,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import { User } from "../../../Classes/User";
 import { Teacher } from "../../../Classes/Teacher";
 import { AdmindashboardService } from "../Services/admindashboard.service";
+import { Router,ActivatedRoute } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AddTeacherComponent implements OnInit {
 
-   t_number:string;
+
    t_name:string;
    t_address:string;
    t_email:string;
@@ -28,10 +29,6 @@ export class AddTeacherComponent implements OnInit {
    t_profilepic:string;
    t_contactno:number;
    fk_u_id:number;
-   t_password:string;
-   t_subjectname:string;
-   t_classteacher:number;
-   t_classdiv:string;
    t_dob:Date;
    t_category:string;
    t_gender:string;
@@ -51,9 +48,8 @@ usertype_arr:string[]=['Parent','Teacher','Admin'];
   user_password:string;
   user_type:string;
   selectedFile:File=null;
-t_class:number;
    matcher = new MyErrorStateMatcher();
-  constructor(private _data:AdmindashboardService) { }
+  constructor(private _data:AdmindashboardService,private _route:Router) { }
 
 
   ngOnInit() {
@@ -67,7 +63,7 @@ t_class:number;
   {
 
     this.fk_u_id=this.user_id;
-    this.t_password=this.user_password;
+
     this.user_type=this.user_type;
 
     const userfd=new FormData();
@@ -80,7 +76,7 @@ t_class:number;
           console.log(data);
 
         const fd=new FormData();
-        fd.append('t_number',this.t_number.toString());
+        // fd.append('t_number',this.t_number.toString());
         fd.append('t_name',this.t_name);
         fd.append('t_address',this.t_address);
         fd.append('t_email',this.t_email);
@@ -88,9 +84,6 @@ t_class:number;
         fd.append('t_profilepic',this.selectedFile,this.selectedFile.name);
         fd.append('t_contactno',this.t_contactno.toString());
         fd.append('fk_u_id',this.fk_u_id.toString());
-        fd.append('t_password',this.t_password);
-        fd.append('t_classdiv',this.t_classdiv);
-        fd.append('t_class',this.t_class.toString());
         fd.append('t_dob',this.t_dob.toString());
         fd.append('t_category',this.t_category);
         fd.append('t_gender',this.t_gender);
@@ -100,7 +93,7 @@ t_class:number;
           (data:any)=>{
             console.log(data);
             //alert("Congratulations!!! Student added");
-
+            this._route.navigate(['/teacherDisplay']);
           });
 
 

@@ -62,7 +62,7 @@ s_arr:Student[];
 
   delete(item:Student)
   {
-    this._ser.deleteStudent(item.s_roll_no).subscribe(
+    this._ser.deleteStudent(item.fk_u_id).subscribe(
       (data:Student[])=>{
         console.log(data);
         this.s_arr.splice(this.s_arr.indexOf(item),1);
@@ -82,11 +82,12 @@ s_arr:Student[];
   }
   update(item:Student)
 {
-  this._route.navigate(['/updateStudent',item.s_gr_no]);
+  this._route.navigate(['/updateStudent',item.fk_u_id]);
 }
 updateprofile(item:Student)
 {
-  this._route.navigate(['/updateprofilepic',item.s_gr_no]);
+  console.log(item.fk_u_id);
+  this._route.navigate(['/updateprofilepic',item.fk_u_id]);
 }
 }
 
