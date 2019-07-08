@@ -1,13 +1,29 @@
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+
+
+<div style="padding-left: 10%;">
 <mat-card class="example-card">
+    <!-- <span style="color:red;" *ngIf="message">{{message}}</span>
+     -->
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title style="font:bolder;">{{s_fname}}  {{s_sname}}</mat-card-title>
       <mat-card-subtitle>{{s_roll_no}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="http://localhost:3000/images/{{s_profilepic}}" alt="Photo of a Student" >
+<div *ngIf="flag1">
+    <img mat-card-image src="http://localhost:3000/images/{{s_profilepic}}"  style="height: 300px;width:300px;padding-left: 14%;">
+  </div>
+  <div *ngIf="flag2">
+  <img [src]="imgURL" height="200" *ngIf="imgURL" style="height: 300px;width:300px;padding-left: 14%;">
+</div>
     <mat-card-content>
-        <input type="file" class="form-control" [(ngModel)]="s_profilepic" name="s_profilepic" (change)="onChange($event)"><br>
-        <br>
+        <!-- <input type="file" class="form-control" [(ngModel)]="s_profilepic" name="s_profilepic" (change)="onChange($event)"><br> -->
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" class="form-control" [(ngModel)]="s_profilepic"  (change)="onChange($event)" />
         <br>
         <br>
         <button mat-raised-button color="primary" (click)="uploadphoto()">Edit Photo</button>
@@ -24,3 +40,5 @@
 <label [(ngModel)]="s_profilepic"></label>
 <input type="file" class="form-control" [(ngModel)]="s_profilepic" name="s_profilepic" (change)="onChange($event)"><br>
 <button (click)="uploadphoto()">Upload Photo</button> -->
+</div>
+</div>

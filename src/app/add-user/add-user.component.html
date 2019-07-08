@@ -1,7 +1,23 @@
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+
+
+<div style="padding-left: 15%;">
+
 <h1> ADD USER </h1>
 <div class="form-control container">
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id">
+  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id" user_id required #user_idFormControl="ngModel">
+  <mat-error *ngIf="user_idFormControl.hasError('user_id') && !user_idFormControl.hasError('required')">
+      Please enter a valid userid
+    </mat-error>
+    <mat-error *ngIf="user_idFormControl.hasError('required')">
+      Userid is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 
@@ -9,7 +25,13 @@
 <br>
 
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
+  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" user_password required name="user_password" minlength="8" maxlength="12" #user_passwordFormControl="ngModel" minlength="8" maxlength="12">
+  <mat-error *ngIf="user_passwordFormControl.hasError('user_password') && !user_passwordFormControl.hasError('required')">
+      Please enter a valid password
+    </mat-error>
+    <mat-error *ngIf="user_passwordFormControl.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 <br>
@@ -17,11 +39,17 @@
 
 
 <mat-form-field>
-  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
+  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" required user_type name="user_type" #user_typeFormControl="ngModel">
     <mat-option *ngFor="let item of usertype_arr" [value]="item" >
       {{item}}
     </mat-option>
   </mat-select>
+  <mat-error *ngIf="user_typeFormControl.hasError('user_type') && !user_typeFormControl.hasError('required')">
+      Please enter a valid user type
+    </mat-error>
+    <mat-error *ngIf="user_typeFormControl.hasError('required')">
+      User type is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 <br>
 <br>

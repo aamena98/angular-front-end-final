@@ -12,11 +12,13 @@ export class LoginPageComponent implements OnInit {
   user_id:number=2018;
   user_password:string;
   usertype_arr:string[]=['Parent','Teacher','Admin'];
-  user_type:string;
+  user_type:string="Admin";
+  flag:boolean=false;
 constructor(private _ser:LoginserviceService,private _route:Router) { }
 
 
   ngOnInit() {
+    console.log('login called');
   }
 
   onlogin()
@@ -28,7 +30,9 @@ constructor(private _ser:LoginserviceService,private _route:Router) { }
         if(data.length==1){
           alert('Login Successfully!!!');
           console.log(data.length);
-          this._route.navigate(['/']);
+          localStorage.setItem('user_id',this.user_id.toString());
+         this._route.navigate(['/addStudent']);
+         this.flag=true;
         }
         else{
           alert('Wrong email or password!!!');

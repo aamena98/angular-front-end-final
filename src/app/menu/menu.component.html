@@ -1,3 +1,5 @@
+
+<div [hidden]=!LogIn>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
@@ -6,23 +8,28 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-toolbar color="primary">Admin DashBoard</mat-toolbar>
     <mat-nav-list>
-        <a mat-list-item routerLink="">Add Student</a>
-      <a mat-list-item routerLink="studentDisplay">Students List</a>
-      <a mat-list-item routerLink="addTeacher">Add Teacher</a>
-      <a mat-list-item routerLink="teacherDisplay">Teachers List </a>
-      <a mat-list-item routerLink="AddNotice">Add Notice </a>
-      <a mat-list-item routerLink="StudentAttendance">Student Attendance </a>
-      <a mat-list-item routerLink="AddUser">Add User</a>
-      <a mat-list-item routerLink="login">Login</a>
-      <a mat-list-item routerLink="classTeacherDisplay">Class Teacher Display</a>
-      <a mat-list-item routerLink="classTeacher">Add Class Teacher</a>
-      <a mat-list-item routerLink="addDivision">Add Division</a>
-      <a mat-list-item routerLink="displayDivision">Display Division</a>
-      <a mat-list-item routerLink="newattendance">New Attendance</a>
-      <a mat-list-item routerLink="result">Exam Result</a>
-      <a mat-list-item routerLink="newresult">New Exam Result</a>
+      <a mat-list-item (click)="onaddstu()">Add Student</a>
+      <a mat-list-item (click)="onstudisplay()">Students List</a>
+      <a mat-list-item (click)="onaddteacher()">Add Teacher</a>
+      <a mat-list-item (click)="onteacherdisplay()">Teachers List </a>
+      <a mat-list-item (click)="onaddnotice()">Add Notice </a>
+      <!-- <a mat-list-item (click)="onstuattendance()">Student Attendance </a> -->
+      <a mat-list-item (click)="onadduser()">Add User</a>
+            <a mat-list-item (click)="onclassteacherdisplay()">Class Teacher Display</a>
+      <a mat-list-item (click)="onaddclassteacher()">Add Class Teacher</a>
+      <a mat-list-item (click)="onaddiv()">Add Division</a>
+      <a mat-list-item (click)="ondisplaydiv()">Display Division</a>
+      <!-- <a mat-list-item (click)="onnewatten()">New Attendance</a> -->
+      <a mat-list-item (click)="onresult()">Exam Result</a>
+      <!-- <a mat-list-item (click)="onnewResult()">New Exam Result</a> -->
+      <a mat-list-item (click)="onlogout()">LogOut</a>
+      <a mat-list-item routerLink=""></a>
+
+      <a mat-list-item routerLink=""></a>
+      <a mat-list-item routerLink=""></a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -35,9 +42,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>SchoolManagement</span>
+      <img src="../../assets/images/logo1.jpg" style="width:40px;height: 40px;">&nbsp;&nbsp;
+      <span>Vishwa Bharati High School</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

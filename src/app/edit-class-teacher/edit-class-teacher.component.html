@@ -1,35 +1,68 @@
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+        <div style="padding-left: 15%;">
+
+
 <h1> Add class Teacher </h1>
 <div class="form-control container">
 <mat-form-field class="example-full-width">
-  <textarea matInput placeholder="Enter ClassTeachers Name" [(ngModel)]="c_t_name" name="c_t_name"></textarea>
+  <textarea matInput placeholder="Enter ClassTeachers Name" c_t_name [(ngModel)]="c_t_name" name="c_t_name" #c_t_nameFormControl="ngModel"></textarea>
+  <mat-error *ngIf="c_t_nameFormControl.hasError('c_t_name') && !c_t_nameFormControl.hasError('required')">
+      Please enter a valid teacher name
+    </mat-error>
+    <mat-error *ngIf="c_t_nameFormControl.hasError('required')">
+      Teacher name is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 <br>
 <br>
 
 <mat-form-field>
-  <mat-select placeholder="Enter Class" [(ngModel)]="c_t_class" name="c_t_class">
+  <mat-select placeholder="Enter Class" c_t_class [(ngModel)]="c_t_class" name="c_t_class" #c_t_classFormControl="ngModel">
     <mat-option *ngFor="let item of class_arr" [value]="item" >
       {{item}}
     </mat-option>
   </mat-select>
+  <mat-error *ngIf="c_t_classFormControl.hasError('c_t_class') && !c_t_classFormControl.hasError('required')">
+      Please enter a valid class
+    </mat-error>
+    <mat-error *ngIf="c_t_classFormControl.hasError('required')">
+      Class is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 <br>
 <br>
 
 <mat-form-field>
-  <mat-select placeholder="Enter Division" [(ngModel)]="c_t_div" name="c_t_div">
+  <mat-select placeholder="Enter Division" [(ngModel)]="c_t_div" name="c_t_div" #c_t_divFormControl="ngModel">
     <mat-option *ngFor="let item of div_arr" [value]="item" >
       {{item}}
     </mat-option>
   </mat-select>
+  <mat-error *ngIf="c_t_divFormControl.hasError('c_t_div') && !user_idFormControl.hasError('required')">
+      Please enter a valid division
+    </mat-error>
+    <mat-error *ngIf="c_t_divFormControl.hasError('required')">
+      Division is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 <br>
 <br>
 <mat-form-field class="example-full-width">
-  <textarea matInput placeholder="Enter user_id" [(ngModel)]="fk_u_id" name="fk_u_id"></textarea>
+  <textarea matInput placeholder="Enter user_id" [(ngModel)]="fk_u_id" name="fk_u_id" #fk_u_idFormControl="ngModel"></textarea>
+  <mat-error *ngIf="fk_u_idFormControl.hasError('user_id') && !fk_u_idFormControl.hasError('required')">
+      Please enter a valid userid
+    </mat-error>
+    <mat-error *ngIf="fk_u_idFormControl.hasError('required')">
+      Userid is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 <br>
 <br>

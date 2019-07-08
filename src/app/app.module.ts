@@ -34,6 +34,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { NewStudentAttendanceComponent } from './new-student-attendance/new-student-attendance.component';
 import { ExamresultComponent } from './examresult/examresult.component';
 import { NewExamResultComponent } from './new-exam-result/new-exam-result.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { NewExamResultComponent } from './new-exam-result/new-exam-result.compon
     ForgetPasswordComponent,
     NewStudentAttendanceComponent,
     ExamresultComponent,
-    NewExamResultComponent
+    NewExamResultComponent,
+    MainPageComponent
   ],
   imports: [
     routing,

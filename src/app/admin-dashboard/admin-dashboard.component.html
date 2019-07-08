@@ -1,30 +1,48 @@
-<h1> ADD STUDENT </h1>
-<div class="form-control container">
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+
+<div style="padding-left: 15%;">
+    <h1> ADD STUDENT </h1>
+  <div class="form-control container">
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id">
+  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" required user_id name="user_id" #user_idFormControl="ngModel">
+  <mat-error *ngIf="user_idFormControl.hasError('user_id') && !user_idFormControl.hasError('required')">
+      Please enter a valid userid
+    </mat-error>
+    <mat-error *ngIf="user_idFormControl.hasError('required')">
+      Userid is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 
-<br>
-<br>
-
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
+  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" required user_password name="user_password" #user_passwordFormControl="ngModel">
+  <mat-error *ngIf="user_passwordFormControl.hasError('user_password') && !user_passwordFormControl.hasError('required')">
+      Please enter a valid user password
+    </mat-error>
+    <mat-error *ngIf="user_passwordFormControl.hasError('required')">
+      User password is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
-
-<br>
-<br>
 
 
 <mat-form-field>
-  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
+  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" required user_type name="user_type" #user_typeFormControl="ngModel">
     <mat-option *ngFor="let item of usertype_arr" [value]="item" >
       {{item}}
     </mat-option>
   </mat-select>
+  <mat-error *ngIf="user_typeFormControl.hasError('user_type') && !user_typeFormControl.hasError('required')">
+      Please enter a valid user type
+    </mat-error>
+    <mat-error *ngIf="user_typeFormControl.hasError('required')">
+      User type is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
-<br>
-<br>
 </div>
 
 <div class="form-control container">
@@ -35,44 +53,72 @@
 
 
  <mat-form-field class="example-full-width">
-    <input matInput type="number" placeholder="Enter Roll No." [(ngModel)]="s_roll_no" name="s_roll_no">
+
+    <input matInput type="number" placeholder="Enter Roll No." required s_roll_no [(ngModel)]="s_roll_no" name="s_roll_no" #s_roll_noFormControl="ngModel">
+    <mat-error *ngIf="s_roll_noFormControl.hasError('') && !s_roll_noFormControl.hasError('required')">
+        Please enter a valid roll number
+      </mat-error>
+      <mat-error *ngIf="s_roll_noFormControl.hasError('required')">
+        Student roll number is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
-<br>
-
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter  Surname" [(ngModel)]="s_sname" name="s_sname">
+      <input matInput placeholder="Enter  Surname" required s_sname [(ngModel)]="s_sname" name="s_sname" #s_snameFormControl="ngModel">
+      <mat-error *ngIf="s_snameFormControl.hasError('s_sname') && !s_snameFormControl.hasError('required')">
+          Please enter a valid surname
+        </mat-error>
+        <mat-error *ngIf="s_snameFormControl.hasError('required')">
+        Student surname is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
 
-<br>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter First name" [(ngModel)]="s_fname" name="s_fname">
+      <input matInput placeholder="Enter First name" required s_fname [(ngModel)]="s_fname" name="s_fname" #s_fnameFormControl="ngModel">
+      <mat-error *ngIf="s_fnameFormControl.hasError('s_fname') && !s_fnameFormControl.hasError('required')">
+          Please enter a valid user first name
+        </mat-error>
+        <mat-error *ngIf="s_fnameFormControl.hasError('required')">
+          First name is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
-
-<br>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter Last name" [(ngModel)]="s_lname" name="s_lname">
+      <input matInput placeholder="Enter Last name" required  s_lname [(ngModel)]="s_lname" name="s_lname" #s_lnameFormControl="ngModel">
+      <mat-error *ngIf="s_lnameFormControl.hasError('s_lname') && !s_lnameFormControl.hasError('required')">
+          Please enter a valid last name
+        </mat-error>
+        <mat-error *ngIf="s_lnameFormControl.hasError('required')">
+          Last name is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
-
-<br>
 
 Select Gender
 <br>
-    <mat-radio-group class="example-radio-group" [(ngModel)]="s_gender" name="s_gender">
+    <mat-radio-group class="example-radio-group" required s_gender [(ngModel)]="s_gender" name="s_gender" #s_genderFormControl="ngModel">
         <mat-radio-button class="example-radio-button" *ngFor="let item of gender_arr" [value]="item">
            {{item}}
         </mat-radio-button>
+    <mat-radio-group class="example-radio-group" required s_gender [(ngModel)]="s_gender" name="s_gender" #s_genderFormControl="ngModel">
+        <mat-error *ngIf="s_genderFormControl.hasError('s_gender') && !s_genderFormControl.hasError('required')">
+            Please enter a valid gender
+          </mat-error>
+          <mat-error *ngIf="s_genderFormControl.hasError('required')">
+            Gender is <strong>required</strong>
+          </mat-error>
       </mat-radio-group>
 
 <br>
 <br>
 <mat-form-field>
-    <input matInput placeholder="Enter Date of birth" type="date" [(ngModel)]="s_dob" name="s_dob">
-    <!-- <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="s_dob" [(ngModel)]="s_dob">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker> -->
+    <input matInput placeholder="Enter Date of birth" required  s_dob type="date" [(ngModel)]="s_dob" name="s_dob" #s_dobFormControl="ngModel">
+    <mat-error *ngIf="s_dobFormControl.hasError('s_dob') && !s_dobFormControl.hasError('required')">
+        Please enter a valid date of birth
+      </mat-error>
+      <mat-error *ngIf="s_dobFormControl.hasError('required')">
+        Date of birth is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
   <br>
@@ -93,37 +139,61 @@ Select Gender
 <br>
 
 <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Enter your address" [(ngModel)]="s_address" name="s_address"></textarea>
+    <textarea matInput placeholder="Enter your address" required s_address [(ngModel)]="s_address" name="s_address" #s_addressFormControl="ngModel"></textarea>
+    <mat-error *ngIf="s_addressFormControl.hasError('s_address') && !s_addressFormControl.hasError('required')">
+        Please enter a valid address
+      </mat-error>
+      <mat-error *ngIf="s_addressFormControl.hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
 <br>
 <br>
 
 <mat-form-field>
-    <mat-select placeholder="Enter Class" [(ngModel)]="s_class" name="s_class">
+    <mat-select placeholder="Enter Class" required s_class [(ngModel)]="s_class" name="s_class" #s_classFormControl="ngModel">
       <mat-option *ngFor="let item of class_arr" [value]="item" >
         {{item}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="s_classFormControl.hasError('s_class') && !s_classFormControl.hasError('required')">
+        Please enter a valid class
+      </mat-error>
+      <mat-error *ngIf="s_classFormControl.hasError('required')">
+      Class is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
   <br>
 <br>
 
 <mat-form-field>
-    <mat-select placeholder="Enter Division" [(ngModel)]="s_div" name="s_div">
+    <mat-select placeholder="Enter Division" required s_div [(ngModel)]="s_div" name="s_div" #s_divFormControl="ngModel">
       <mat-option *ngFor="let item of div_arr" [value]="item" >
         {{item}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="s_divFormControl.hasError('s_div') && !s_divFormControl.hasError('required')">
+        Please enter a valid division
+      </mat-error>
+      <mat-error *ngIf="s_divFormControl.hasError('required')">
+        Division is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
   <br>
   <br>
   <mat-form-field class="example-full-width">
       <span matPrefix>+91 &nbsp;</span>
-      <input type="tel" matInput placeholder="Enter Contact No." [(ngModel)]="s_contactno" name="s_contactno">
+      <input type="tel" matInput placeholder="Enter Contact No." required s_contactno [(ngModel)]="s_contactno" name="s_contactno" #s_contactnoFormControl="ngModel">
       <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error *ngIf="s_contactnoFormControl.hasError('s_contactno') && !s_contactnoFormControl.hasError('required')">
+          Please enter a valid contact number
+        </mat-error>
+        <mat-error *ngIf="s_contactnoFormControl.hasError('required')">
+          Contact number is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
 
     <br>
@@ -131,11 +201,17 @@ Select Gender
 
 
 <mat-form-field>
-    <mat-select placeholder="Enter Category" [(ngModel)]="s_category" name="s_category">
+    <mat-select placeholder="Enter Category" [(ngModel)]="s_category" required s_category name="s_category" #s_categoryFormControl="ngModel">
       <mat-option *ngFor="let item of category_arr" [value]="item" >
         {{item}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="s_categoryFormControl.hasError('s_category') && !s_categoryFormControl.hasError('required')">
+        Please enter a valid category
+      </mat-error>
+      <mat-error *ngIf="s_categoryFormControl.hasError('required')">
+        Category is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
   <br>
@@ -143,11 +219,17 @@ Select Gender
 
 
 <mat-form-field>
-    <mat-select placeholder="Select BloodGroup" [(ngModel)]="s_bloodgroup" name="s_bloodgroup">
+    <mat-select placeholder="Select BloodGroup" [(ngModel)]="s_bloodgroup" s_bloodgroup required name="s_bloodgroup" #s_bloodgroupFormControl="ngModel">
       <mat-option *ngFor="let item of bloodgroup_arr" [value]="item" >
         {{item}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="s_bloodgroupFormControl.hasError('s_bloodgroup') && !s_bloodgroupFormControl.hasError('required')">
+        Please enter a valid blood group
+      </mat-error>
+      <mat-error *ngIf="s_bloodgroupFormControl.hasError('required')">
+        Blood group is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
   <br>
@@ -156,10 +238,15 @@ Select Gender
 
   <br>
 
-  <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic">
- <!-- <mat-form-field class="example-full-width">
-    <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="s_profilepic" name="s_profilepic">
-  </mat-form-field> -->
+  <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" s_profilepic required [(ngModel)]="s_profilepic" name="s_profilepic" #s_profilepicFormControl="ngModel">
+  <mat-error *ngIf="s_profilepicFormControl.hasError('s_profilepic') && !s_profilepicFormControl.hasError('required')">
+      Please enter a valid profile picture
+    </mat-error>
+    <mat-error *ngIf="s_profilepicFormControl.hasError('required')">
+      profile picture is <strong>required</strong>
+    </mat-error>
+<br>
+<br><button mat-raised-button color="warn" (click)="onadd()"><mat-icon>add</mat-icon>ADD</button>
+</mat-radio-group>
 </form>
-<button (click)="onadd()" class="btn btn-primary">Add</button>
 </div>

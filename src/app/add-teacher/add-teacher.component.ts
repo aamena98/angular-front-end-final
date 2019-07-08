@@ -46,7 +46,7 @@ usertype_arr:string[]=['Parent','Teacher','Admin'];
 
   user_id:number;
   user_password:string;
-  user_type:string;
+  user_type:string="Teacher";
   selectedFile:File=null;
    matcher = new MyErrorStateMatcher();
   constructor(private _data:AdmindashboardService,private _route:Router) { }

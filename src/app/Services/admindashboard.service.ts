@@ -11,9 +11,16 @@ export class AdmindashboardService {
   updateprofileurl:string='http://localhost:3000/profile/';
   adduserurl:string='http://localhost:3000/user/';
   teachergetaddurl:string='http://localhost:3000/teacher/';
+viewStudents:string='http://localhost:3000/viewstuonadmin/';
 
   constructor(public _http:HttpClient) { }
-
+  isLoggedIn(){
+   // console.log(localStorage.getItem('user_id'));
+    if(localStorage.getItem('user_id')!=''){
+      return true;
+    }
+    return false;
+  }
   viewClass()
   {
     return this._http.get(this.studentgetaddurl);
@@ -79,5 +86,9 @@ export class AdmindashboardService {
   getStudentByUserIdforprofilepic(fk_u_id:number)
   {
     return this._http.get(this.updateprofileurl+fk_u_id);
+  }
+  viewStudentsOnAdmin(s_class:number,s_div:string)
+  {
+    return this._http.get(this.viewStudents+s_class+"/"+s_div);
   }
 }

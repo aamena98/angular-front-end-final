@@ -1,12 +1,26 @@
-<h1> ADD Divion </h1>
-<div class="form-control container">
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Division" [(ngModel)]="div_name" name="div_name">
-</mat-form-field>
+<div class="container">
+  <div class=row>
+    <div class=col-md-3>
+      <app-menu></app-menu>
+    </div>
+    <div class=col-md-9>
+      <div style="padding-left: 15%;">
+        <h1> ADD Division </h1>
+        <div class="form-control container">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter Division" [(ngModel)]="div_name" div_name required name="div_name" #divFormControl="ngModel">
+          <mat-error *ngIf="divFormControl.hasError('div_name') && !emailFormControl.hasError('required')">
+            Please enter a valid division
+          </mat-error>
+          <mat-error *ngIf="divFormControl.hasError('required')">
+            Division is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
-<br>
-<br>
-<button (click)="onadd()" class="btn btn-primary">Add</button>
-</div>
+        <br>
+        <br>
+        <button mat-raised-button color="warn" (click)="onadd()"><mat-icon>add</mat-icon>ADD</button>
 
+        </div>
 
+      </div>

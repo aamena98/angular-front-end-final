@@ -21,12 +21,15 @@ const ELEMENT_DATA:PeriodicElement[]=[
   styleUrls: ['./student-display.component.css']
 })
 export class StudentDisplayComponent implements OnInit {
-
+s_class:number;
+s_div:string;
   dataSource = new MatTableDataSource();
   pageSizeOptions: number[] = [1,2,5];
   selection = new SelectionModel<PeriodicElement>(true, []);
 s_arr:Student[];
   displayedColumns: string[] = ['select','s_profilepic','s_roll_no','s_sname','s_fname','s_class','s_div','Buttons'];
+flag1:boolean=true;
+flag2:boolean=false;
 
 @ViewChild(MatPaginator) paginator:MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
@@ -34,16 +37,35 @@ s_arr:Student[];
   constructor(private _ser:AdmindashboardService,private _route:Router) { }
 
   ngOnInit() {
+    this.flag1=true;
+   this.flag2=false;
     this.dataSource.paginator=this.paginator;
     this.dataSource.sort = this.sort;
         this._ser.viewClass().subscribe(
           (data:Student[])=>{
             console.log(data);
-            this.s_arr=data;
-           this.dataSource.data=this.s_arr;
+   //         this.s_arr=data;
+//           this.dataSource.data=this.s_arr;
           }
         );
   }
+  firsta(c:number,d:string)
+  {
+    this.flag2=true;
+    this.flag1=false;
+this.s_class=c;
+this.s_div=d;
+this._ser.viewStudentsOnAdmin(this.s_class,this.s_div).subscribe(
+  (data:any)=>
+  {
+    console.log(data);
+    this.s_arr=data;
+    this.dataSource.data=this.s_arr;
+
+  }
+);
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

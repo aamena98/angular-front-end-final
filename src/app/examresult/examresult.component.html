@@ -1,3 +1,11 @@
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+        <div style="padding-left: 14%;">
+
 <h1> ADD EXAM RESULT </h1>
 <div class="form-control container">
 <mat-form-field>
@@ -49,8 +57,8 @@
   </mat-select>
 </mat-form-field>
 <br>
+<button mat-raised-button color="warn" (click)="getstudents()"><mat-icon>add</mat-icon>Get Students</button>
 
-<button (click)="getstudents()">Get Students</button>
 
 <div>
 <div class="col-md-4">
@@ -94,7 +102,9 @@
 </div>
 </div>
 <div>
-    <button (click)="onadd()" class="btn btn-primary">Add Result</button>
+
+    <button mat-raised-button color="warn" (click)="onadd()"><mat-icon>add</mat-icon>Add Result</button>
+
   </div>
 </div>
 

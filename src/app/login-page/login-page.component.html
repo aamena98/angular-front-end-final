@@ -1,30 +1,53 @@
-<h1>LOGIN</h1>
-
+<div class="bg-image"></div>
+<h1>hello</h1>
+<div class="bg-text">
+  <img src="../../assets/images/logo1.jpg" style="width:130px;height: 130px;">
+  <br><br><br>
+<h1>LOGIN</h1><br>
 <div class="form-control container">
   <form class="example-form">
       <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Enter User ID" [(ngModel)]="user_id" name="user_id">
+          <input matInput type="text" placeholder="Enter User ID" [(ngModel)]="user_id" user_id required name="user_id" #user_idFormControl="ngModel" minlength="4">
+          <mat-error *ngIf="user_idFormControl.hasError('user_id') && !user_idFormControl.hasError('required')">
+              Please enter a valid userid
+            </mat-error>
+            <mat-error *ngIf="user_idFormControl.hasError('required')">
+              Userid is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
  <br>
  <mat-form-field class="example-full-width">
-  <input matInput type="password" placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
+  <input matInput type="password" placeholder="Enter Password" [(ngModel)]="user_password" required user_password name="user_password" #user_passwordFormControl="ngModel">
+  <mat-error *ngIf="user_passwordFormControl.hasError('user_password') && !user_passwordFormControl.hasError('required')">
+      Please enter a valid user password
+    </mat-error>
+    <mat-error *ngIf="user_passwordFormControl.hasError('required')">
+      User password is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 <br>
 
-<mat-form-field>
-  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
+<!-- <mat-form-field>
+  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type" required user_type #user_typeFormControl="ngModel">
     <mat-option *ngFor="let item of usertype_arr" [value]="item" >
       {{item}}
     </mat-option>
   </mat-select>
-</mat-form-field>
-<br>
-<button mat-raised-button color="primary" (click)="onlogin()">LOGIN</button>
+  <mat-error *ngIf="user_typeFormControl.hasError('user_password') && !user_typeFormControl.hasError('required')">
+      Please enter a valid user type
+    </mat-error>
+    <mat-error *ngIf="user_typeFormControl.hasError('required')">
+      User type is <strong>required</strong>
+    </mat-error>
+</mat-form-field> -->
+<br><br>
+<button mat-raised-button color="primary" (click)="onlogin()" style="width:30%;">LOGIN</button>
 
 <br>
 <br>
-<a (click)="forgetpass()">ForgotPassword</a>
+<!-- <a (click)="forgetpass()">ForgotPassword</a> -->
 </form>
  </div>
+</div>

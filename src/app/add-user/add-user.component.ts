@@ -11,7 +11,7 @@ export class AddUserComponent implements OnInit {
   user_id:number;
   user_password:string;
   user_type:string;
-  usertype_arr:string[]=['Parent','Teacher','Admin','Others'];
+  usertype_arr:string[]=['Parent','Teacher'];
 
   constructor(private _data:AdmindashboardService) { }
 

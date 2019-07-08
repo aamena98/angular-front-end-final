@@ -10,6 +10,8 @@ import { TeacherserviceService } from "../Services/teacherservice.service";
 export class UpdateTeacherProfileComponent implements OnInit {
 
 
+  flag1:boolean=true;
+  flag2:boolean=false;
 
   t_name:string;
   t_address:string;
@@ -42,15 +44,40 @@ usertype_arr:string[]=['Parent','Teacher','Admin'];
  user_type:string;
  selectedFile:File=null;
  t_class:number;
+ public imagePath;
+ imgURL: any;
+ public message: string;
+
+ preview(files) {
+   if (files.length === 0)
+     return;
+
+   var mimeType = files[0].type;
+   if (mimeType.match(/image\/*/) == null) {
+     this.message = "Only images are supported.";
+     return;
+   }
+
+   var reader = new FileReader();
+   this.imagePath = files;
+   reader.readAsDataURL(files[0]);
+   reader.onload = (_event) => {
+     this.imgURL = reader.result;
+   }
+ }
 
 
 onChange(value)
 {
+  this.flag1=false;
+this.flag2=true;
   this.selectedFile=<File>value.target.files[0];
 }
   constructor(private _ser:TeacherserviceService,private _aroute:ActivatedRoute,private _route:Router) { }
 
   ngOnInit() {
+this.flag1=true;
+this.flag2=false;
     this.fk_u_id=this._aroute.snapshot.params['id'];
     this._ser.getTeacherByidforprofilepic(this.fk_u_id).subscribe(
       (data:Teacher[])=>{

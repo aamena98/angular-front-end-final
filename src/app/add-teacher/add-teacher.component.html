@@ -1,7 +1,23 @@
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+
+
+<div style="padding-left: 15%;">
+
 <h1> ADD TEACHER </h1>
 <div class="form-control container">
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter UserID" [(ngModel)]="user_id" name="user_id">
+  <input matInput placeholder="Enter UserID" required  user_id [(ngModel)]="user_id" name="user_id" #user_idFormControl="ngModel">
+  <mat-error *ngIf="user_idFormControl.hasError('user_id') && !user_idFormControl.hasError('required')">
+      Please enter a valid Userid
+    </mat-error>
+    <mat-error *ngIf="user_idFormControl.hasError('required')">
+        Userid is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 
@@ -9,7 +25,13 @@
 <br>
 
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Password" [(ngModel)]="user_password" name="user_password">
+  <input matInput placeholder="Enter Password" required user_password [(ngModel)]="user_password" name="user_password" #user_passwordFormControl="ngModel">
+  <mat-error *ngIf="user_passwordFormControl.hasError('user_password') && !user_passwordFormControl.hasError('required')">
+      Please enter a valid password
+    </mat-error>
+    <mat-error *ngIf="user_passwordFormControl.hasError('required')">
+        password is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 
 <br>
@@ -17,11 +39,17 @@
 
 
 <mat-form-field>
-  <mat-select placeholder="Select User Type" [(ngModel)]="user_type" name="user_type">
+  <mat-select placeholder="Select User Type" user_type [(ngModel)]="user_type" required name="user_type" #user_typeFormControl="ngModel">
     <mat-option *ngFor="let item of usertype_arr" [value]="item" >
       {{item}}
     </mat-option>
   </mat-select>
+  <mat-error *ngIf="user_typeFormControl.hasError('user_type') && !n_dateFormControl.hasError('required')">
+      Please enter a valid user type
+    </mat-error>
+    <mat-error *ngIf="user_typeFormControl.hasError('required')">
+        User type is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 <br>
 <br>
@@ -31,17 +59,23 @@
   <form class="example-form">
 
 
-
-
  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="Enter Name" [(ngModel)]="t_name" name="t_name">
+    <input matInput type="text" placeholder="Enter Name" t_name required [(ngModel)]="t_name" name="t_name" >
+    <!-- <mat-error *ngIf="t_name?.hasError('required')">
+      Teacher name required
+    </mat-error> -->
+
   </mat-form-field>
 
 <br>
 
 
 <mat-form-field class="example-full-width">
-  <textarea matInput placeholder="Enter your address" [(ngModel)]="t_address" name="t_address"></textarea>
+  <textarea matInput placeholder="Enter your address" required t_address [(ngModel)]="t_address" name="t_address" ></textarea>
+  <!-- <mat-error *ngIf="t_address?.hasError('required')">
+    Teacher address required
+  </mat-error> -->
+
 </mat-form-field>
 
 <br>
@@ -64,31 +98,32 @@
 <br>
 
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Qualification" [(ngModel)]="t_qualification" name="t_qualification">
+  <input matInput placeholder="Enter Qualification" required t_qualification #t_qualificationFormControl="ngModel" [(ngModel)]="t_qualification" name="t_qualification" >
+  <mat-error *ngIf="t_qualificationFormControl.hasError('t_qualification') && !t_qualification.hasError('required')">
+      Please enter a valid teacher qualification
+    </mat-error>
+    <mat-error *ngIf="t_qualificationFormControl.hasError('required')">
+      Teacher qualification is <strong>required</strong>
+    </mat-error>
 </mat-form-field>
 <br>
 
 <br>
   <mat-form-field class="example-full-width">
       <span matPrefix>+91 &nbsp;</span>
-      <input type="tel" matInput placeholder="Enter Contact No." [(ngModel)]="t_contactno" name="t_contactno">
+      <input type="tel" matInput placeholder="Enter Contact No." required t_contactno #t_contactnoFormControl="ngModel" [(ngModel)]="t_contactno" #t_contactnoFormControl="ngModel" name="t_contactno" maxlength="10" minlength="10" >
       <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error *ngIf="t_contactnoFormControl.hasError('t_contactno') && !t_contactnoFormControl.hasError('required')">
+          Please enter a valid teacher contact number
+        </mat-error>
+        <mat-error *ngIf="t_contactnoFormControl.hasError('required')">
+            Contact number is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
 
 
     <br>
-
-    <!-- <mat-form-field>
-      <mat-select placeholder="Enter Class" [(ngModel)]="t_classteacher" name="t_classteacher">
-        <mat-option *ngFor="let item of class_arr" [value]="item" >
-          {{item}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> -->
-
     <br>
-  <br>
-
     <br>
 
 
@@ -97,20 +132,44 @@
 <br>
 Select Gender
 <br>
-    <mat-radio-group class="example-radio-group" [(ngModel)]="t_gender" name="t_gender">
+    <mat-radio-group class="example-radio-group" t_gender required [(ngModel)]="t_gender" #t_genderFormControl="ngModel" name="t_gender">
         <mat-radio-button class="example-radio-button" *ngFor="let item of gender_arr" [value]="item">
            {{item}}
         </mat-radio-button>
+        <mat-error *ngIf="t_genderFormControl.hasError('t_gender') && !t_genderFormControl.hasError('required')">
+            Please Select gender
+          </mat-error>
+          <mat-error *ngIf="t_genderFormControl.hasError('required')">
+              Gender is <strong>required</strong>
+          </mat-error>
       </mat-radio-group>
 
 <br>
 <br>
+
 <mat-form-field>
-    <input matInput placeholder="Enter Date of birth" type="date" [(ngModel)]="t_dob" name="t_dob">
+  <input matInput placeholder="Enter Date of birth" required  s_dob type="date" [(ngModel)]="t_dob" name="t_dob" #t_dobFormControl="ngModel">
+  <mat-error *ngIf="t_dobFormControl.hasError('t_dob') && !t_dobFormControl.hasError('required')">
+      Please enter a valid date of birth
+    </mat-error>
+    <mat-error *ngIf="t_dobFormControl.hasError('required')">
+      Date of birth is <strong>required</strong>
+    </mat-error>
+</mat-form-field>
+
+<!--
+<mat-form-field>
+  <input matInput placeholder="Enter Date of birth" type="date" required t_dob [(ngModel)]="t_dob" name="t_dob" #t_dobFormControl="ngModel">
   <input matInput [matDatepicker]="picker" placeholder="Choose your Birth date" name="t_dob" [(ngModel)]="t_dob">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <mat-error *ngIf="t_dobFormControl.hasError('t_dob') && !t_dobFormControl.hasError('required')">
+        Please Enter date of birth
+      </mat-error>
+      <mat-error *ngIf="t_dobFormControl.hasError('required')">
+          Date of birth is <strong>required</strong>
+      </mat-error>
+    </mat-form-field> -->
 <br>
 
 <br>
@@ -120,11 +179,18 @@ Select Gender
 
 
 <mat-form-field>
-    <mat-select placeholder="Enter Category" [(ngModel)]="t_category" name="t_category">
+    <mat-select placeholder="Enter Category" t_category required [(ngModel)]="t_category" name="t_category" #t_categoryFormControl="ngModel">
       <mat-option *ngFor="let item of category_arr" [value]="item" >
         {{item}}
       </mat-option>
     </mat-select>
+
+    <mat-error *ngIf="t_categoryFormControl.hasError('t_category') && !t_categoryFormControl.hasError('required')">
+        Please Enter teacher category
+      </mat-error>
+      <mat-error *ngIf="t_categoryFormControl.hasError('required')">
+          Teacher category is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
   <br>
@@ -132,11 +198,20 @@ Select Gender
 
 
 
+<br>
+<br>
+  <br>
 
-  <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="t_profilepic" name="t_profilepic">
-  <!-- <mat-form-field class="example-full-width">
-    <input placeholder="Upload profile Photo" type="file" (change)="onChange($event)" [(ngModel)]="t_profilepic" name="t_profilepic">
-  </mat-form-field> -->
-</form>
-<button (click)="onadd()" class="btn btn-primary">Add</button>
-</div>
+  <input placeholder="Upload profile Photo" required type="file" (change)="onChange($event)" t_profilepic [(ngModel)]="t_profilepic" name="t_profilepic" #t_profilepicFormControl="ngModel">
+  <mat-error *ngIf="t_profilepicFormControl.hasError('t_profilepic') && !t_profilepicFormControl.hasError('required')">
+      Please select Profilepic
+    </mat-error>
+    <mat-error *ngIf="t_profilepicFormControl.hasError('required')">
+        Teacher profilepic is <strong>required</strong>
+    </mat-error>
+    <br>
+    <br>
+    <button mat-raised-button color="warn" (click)="onadd()"><mat-icon>add</mat-icon>ADD</button>
+
+<form>
+

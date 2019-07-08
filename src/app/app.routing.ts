@@ -20,9 +20,11 @@ import { DivisionComponent } from './division/division.component';
 import { NewStudentAttendanceComponent } from './new-student-attendance/new-student-attendance.component';
 import { ExamresultComponent } from './examresult/examresult.component';
 import { NewExamResultComponent } from './new-exam-result/new-exam-result.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 const arr:Routes=[
-  {path:'',component:AdminDashboardComponent},
+  {path:'',component:MainPageComponent},
+  {path:'addStudent',component:AdminDashboardComponent},
   {path:'studentDisplay',component:StudentDisplayComponent},
   {path:'updateStudent/:id',component:EditStudentComponent},
   {path:'updateprofilepic/:id',component:UpdateProfilepicComponent},
@@ -41,7 +43,8 @@ const arr:Routes=[
 {path:'displayDivision',component:DivisionComponent},
 {path:'newattendance',component:NewStudentAttendanceComponent},
 {path:'result',component:ExamresultComponent},
-{path:'newresult',component:NewExamResultComponent}
+{path:'newresult',component:NewExamResultComponent},
+// {path:'menuc',component:MenuComponent}
 ];
 
 

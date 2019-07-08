@@ -154,6 +154,7 @@ this.exam_result.push(new studentexamResult(this.fk_u_id_arr[this.i],this.class_
 this._result.Addresult(this.exam_result).subscribe(
   (data:any)=>{
     console.log(data);
+    alert("Exam result uploaded successfully");
 });
   }
 

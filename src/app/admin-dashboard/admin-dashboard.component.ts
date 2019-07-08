@@ -6,7 +6,7 @@ import { LoginserviceService } from "../Services/loginservice.service";
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { formatDate } from '@angular/common';
-
+import { Router } from "@angular/router";
 
 //import { Router,ActivatedRoute } from '@angular/router';
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -33,7 +33,7 @@ export class AdminDashboardComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   s_gr_no:number=9911;
-  s_roll_no:number=9911;
+  s_roll_no:number;
   s_sname:string='abc';
   s_fname:string='abc';
   s_lname:string="abc";
@@ -56,19 +56,19 @@ export class AdminDashboardComponent implements OnInit {
   arr:Student[]=[];
 gender_arr:string[]=['Male','Female'];
 class_arr:number[]=[1,2,3,4,5,6,7,8,9,10];
-div_arr:string[]=['A','B','C'];
+div_arr:string[]=['A','B'];
 category_arr:string[]=['General','SC','ST','OBC'];
 bloodgroup_arr:string[]=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
 teacher_arr:string[]=['sunita','vinita','minita','namita'];
 minDate = new Date(1990, 0, 1);
 maxDate = new Date(Date.now());
-usertype_arr:string[]=['Parent','Teacher','Admin'];
+usertype_arr:string[]=['Parent','Teacher'];
   s_user_type:string;
 user_arr:User[];
-  user_id:number=99;
+  user_id:number=2018;
   user_password:string="stu99";
   user_type:string="Parent";
-  constructor(private _data:AdmindashboardService) { }
+  constructor(private _data:AdmindashboardService,private _route:Router) { }
 
   ngOnInit() {
   }
@@ -126,6 +126,7 @@ user_arr:User[];
         fd.append('s_contactno',this.s_contactno.toString());
         fd.append('s_category',this.s_category);
         fd.append('s_bloodgroup',this.s_bloodgroup);
+        fd.append('s_password',this.user_password);
         fd.append('s_profilepic',this.selectedFile,this.selectedFile.name);
         fd.append('fk_u_id',this.fk_u_id.toString());
 
@@ -134,6 +135,7 @@ user_arr:User[];
         this._data.AddStudent(fd).subscribe(
           (data:any)=>{
             console.log(data);
+            this._route.navigate(['/studentDisplay']);
             //alert("Congratulations!!! Student added");
 
           });

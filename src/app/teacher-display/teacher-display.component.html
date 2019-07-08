@@ -1,3 +1,12 @@
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+        <div style="padding-left: 13%;">
+
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Checkbox Column -->
@@ -41,7 +50,7 @@
   <td mat-cell *matCellDef="let element"> {{element.t_name}} </td>
 </ng-container>
 
-
+<!--
 <ng-container matColumnDef="t_class">
     <th mat-header-cell *matHeaderCellDef > Teachers Class </th>
     <td mat-cell *matCellDef="let element"> {{element.t_class}} </td>
@@ -51,7 +60,7 @@
   <ng-container matColumnDef="t_classdiv">
       <th mat-header-cell *matHeaderCellDef > Teachers Division</th>
       <td mat-cell *matCellDef="let element"> {{element.t_classdiv}} </td>
-    </ng-container>
+    </ng-container> -->
 
 
     <ng-container matColumnDef="t_qualification">

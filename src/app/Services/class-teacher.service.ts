@@ -8,6 +8,7 @@ import { classTeacher } from '../../../Classes/classTeacher';
 export class ClassTeacherService {
 classTeacherurl:string='http://localhost:3000/classTeacher/';
 classTeacherurl1:string='http://localhost:3000/classTeacher1/';
+classTeacherurl2:string='http://localhost:3000/profileclassteacher/'
   constructor(public _http:HttpClient) { }
   getclassteacher()
   {
@@ -40,5 +41,9 @@ classTeacherurl1:string='http://localhost:3000/classTeacher1/';
   getclassTeacherByUserId(fk_u_id:number)
   {
     return this._http.get(this.classTeacherurl+fk_u_id);
+  }
+  getprofilebyUserId(fk_u_id:number)
+  {
+    return this._http.get(this.classTeacherurl2+fk_u_id);
   }
 }

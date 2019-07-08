@@ -1,0 +1,9 @@
+.example-card {
+  max-width: 400px;
+  left:400px;
+}
+
+.example-header-image {
+  background-image: url('http://localhost:3000/images/{{t_profilepic}}');
+  background-size: cover;
+}

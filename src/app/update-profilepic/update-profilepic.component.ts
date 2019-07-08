@@ -39,14 +39,42 @@ div_arr:string[]=['A','B','C'];
 category_arr:string[]=['General','SC','ST','OBC'];
 bloodgroup_arr:string[]=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
 teacher_arr:string[]=['sunita','vinita','minita','namita'];
+flag1:boolean=true;
+flag2:boolean=false;
+public file_srcs: string[] = [];
+selectedfile1;
+public imagePath;
+  imgURL: any;
+  public message: string;
 
+  preview(files) {
+    if (files.length === 0)
+      return;
 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    }
+  }
 onChange(value)
   {
+    this.flag2=true;
+    this.flag1=false;
     this.selectedFile=<File>value.target.files[0];
+    this.selectedfile1=<File>value.target.files[0].name;
+    console.log(this.selectedFile);
   }
   ngOnInit() {
-
+this.flag1=true;
+this.flag2=false;
     this.fk_u_id=this._aroute.snapshot.params['id'];
     console.log(this.fk_u_id);
     this._ser.getStudentByUserIdforprofilepic(this.fk_u_id).subscribe(

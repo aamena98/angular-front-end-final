@@ -28,7 +28,7 @@ export class TeacherDisplayComponent implements OnInit {
   pageSizeOptions: number[] = [1,2,5];
   selection = new SelectionModel<PeriodicElement>(true, []);
 t_arr:Teacher[];
-  displayedColumns: string[] = ['select','t_profilepic','t_number','t_name','t_class','t_classdiv','t_qualification','Buttons'];
+  displayedColumns: string[] = ['select','t_profilepic','t_number','t_name','t_qualification','Buttons'];
 
 
 

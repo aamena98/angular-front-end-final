@@ -1,22 +1,51 @@
-<h1> ADD STUDENT </h1>
+<div class="container">
+    <div class=row>
+      <div class=col-md-3>
+        <app-menu></app-menu>
+      </div>
+      <div class=col-md-9>
+        <div style="padding-left: 15%;">
+
+<h1> ADD NOTICE</h1>
 <div class="form-control container">
   <mat-form-field>
-    <input matInput placeholder="Enter Date " type="date" [(ngModel)]="n_date" name="n_date">
+    <input matInput placeholder="Enter Date " type="date" required n_date [(ngModel)]="n_date" name="n_date" #n_dateFormControl="ngModel">
+    <mat-error *ngIf="n_dateFormControl.hasError('n_date') && !n_dateFormControl.hasError('required')">
+        Please enter a valid date
+      </mat-error>
+      <mat-error *ngIf="n_dateFormControl.hasError('required')">
+        Date is <strong>required</strong>
+      </mat-error>
   </mat-form-field>
 
 <br>
 <br>
 
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Notice Title" [(ngModel)]="n_title" name="n_title">
-</mat-form-field>
+  <input matInput placeholder="Enter Notice Title" required n_title [(ngModel)]="n_title" name="n_title" #n_titleFormControl="ngModel">
+  <mat-error *ngIf="n_dateFormControl.hasError('n_title') && !n_dateFormControl.hasError('required')">
+      Please enter a valid Title
+    </mat-error>
+    <mat-error *ngIf="n_dateFormControl.hasError('required')">
+      Title is <strong>required</strong>
+    </mat-error>
 
+</mat-form-field>
 <br>
 <br>
 
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Enter Notice Description" [(ngModel)]="n_description" name="n_description">
-</mat-form-field>
-<button (click)="onadd()" class="btn btn-primary">Add</button>
+  <input matInput placeholder="Enter Notice Description" required [(ngModel)]="n_description" n_description #n_descriptionFormControl="ngModel"name="n_description">
+  <mat-error *ngIf="n_dateFormControl.hasError('n_description') && !n_dateFormControl.hasError('required')">
+      Please enter a valid Description
+    </mat-error>
+    <mat-error *ngIf="n_dateFormControl.hasError('required')">
+        Description is <strong>required</strong>
+    </mat-error>
+
+</mat-form-field><br>
+<br>
+<button mat-raised-button color="warn" (click)="onadd()"><mat-icon>add</mat-icon>ADD</button>
 </div>
 
+</div>

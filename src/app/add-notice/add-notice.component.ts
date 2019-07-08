@@ -23,7 +23,7 @@ this._data.AddNotice(new Notice(this.n_date,this.n_title,this.n_description)).su
   (data:any)=>
   {
     console.log(data);
-
+alert("Notice added successfully");
   }
 );
 

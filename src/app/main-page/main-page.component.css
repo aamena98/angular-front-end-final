@@ -2,7 +2,6 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: aliceblue;
 }
 
 * {
@@ -38,36 +37,15 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  width: 30%;
+  width: 80%;
   padding: 20px;
   text-align: center;
 }
 
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color:white !important;
- }
 
- ::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
-  background-color:white !important;
-}
-
-::ng-deep.mat-form-field-ripple {
- /*change color of underline when focused*/
- background-color: white !important;;
-}
-::ng-deep .mat-form-field-label{
-  color:white !important;
-}
-
-::ng-deep .mat-focused .mat-form-field-placeholder{
-
-  background-color:white;
-}
 img {
   border-radius: 50%;
   position: absolute;
   top:-50px;
-  left:160px;
+  left:550px;
 }
